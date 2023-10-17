@@ -1,5 +1,6 @@
 package ru.project.niimbot
 
+import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.content.pm.PackageManager
 import android.os.Build
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 
@@ -39,23 +41,24 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
 
-            checkPermissions()
-
             if (bAdapter == null) {
                 Toast.makeText(applicationContext, "Bluetooth Not Supported", Toast.LENGTH_SHORT).show()
             } else {
-
-                val pairedDevices = bAdapter.bondedDevices
-                if (pairedDevices.size > 0) {
-                    for (device in pairedDevices) {
-
-                        val deviceName = device.name
-
-                        val macAddress = device.address
-
-                        tvName.append("$deviceName\n")
-                        tvMac.append("$macAddress\n")
+                if (ActivityCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.BLUETOOTH_CONNECT
+                    ) != PackageManager.PERMISSION_GRANTED) {
+                    val pairedDevices = bAdapter.bondedDevices
+                    if (pairedDevices.size > 0) {
+                        for (device in pairedDevices) {
+                            val deviceName = device.name
+                            val macAddress = device.address
+                            tvName.append("$deviceName \n")
+                            tvMac.append("$macAddress\n")
+                        }
                     }
+                } else {
+                    checkPermissions()
                 }
             }
         }
@@ -74,31 +77,30 @@ class MainActivity : AppCompatActivity() {
         } else {
             launcher.launch(REQUEST_PERMISSIONS)
         }
-        shouldShowRequestPermissionRationale(android.Manifest.permission.BLUETOOTH)
-        shouldShowRequestPermissionRationale(android.Manifest.permission.BLUETOOTH_ADMIN)
+        shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH)
+        shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_ADMIN)
 
         if (Build.VERSION.SDK_INT >= 31) {
-            shouldShowRequestPermissionRationale(android.Manifest.permission.BLUETOOTH_CONNECT)
-            shouldShowRequestPermissionRationale(android.Manifest.permission.BLUETOOTH_SCAN)
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_CONNECT)
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_SCAN)
         }
 
-        shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
+        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
     }
 
     companion object {
         private val REQUEST_PERMISSIONS: Array<String> = buildList {
             if (Build.VERSION.SDK_INT <= 30) {
-                add(android.Manifest.permission.BLUETOOTH)
-                add(android.Manifest.permission.BLUETOOTH_ADMIN)
+                add(Manifest.permission.BLUETOOTH)
+                add(Manifest.permission.BLUETOOTH_ADMIN)
             }
             if (Build.VERSION.SDK_INT >= 31) {
-                add(android.Manifest.permission.BLUETOOTH_CONNECT)
-                add(android.Manifest.permission.BLUETOOTH_SCAN)
+                add(Manifest.permission.BLUETOOTH_CONNECT)
+                add(Manifest.permission.BLUETOOTH_SCAN)
             }
-            add(android.Manifest.permission.ACCESS_FINE_LOCATION)
-            add(android.Manifest.permission.ACCESS_COARSE_LOCATION)
-
+            add(Manifest.permission.ACCESS_FINE_LOCATION)
+            add(Manifest.permission.ACCESS_COARSE_LOCATION)
         }.toTypedArray()
     }
 }
