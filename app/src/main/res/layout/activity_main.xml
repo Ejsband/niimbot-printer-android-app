@@ -15,8 +15,6 @@
         android:text="Get Paired Devices"
         tools:ignore="MissingConstraints" />
 
-    <!--A layout to display 2 text views, one consisting
-        of names and the other displaying their mac ids-->
     <RelativeLayout
         android:id="@+id/info"
         android:layout_width="wrap_content"
@@ -25,13 +23,11 @@
         android:layout_centerHorizontal="true"
         tools:ignore="MissingConstraints">
 
-        <!--Paired devices name-->
         <TextView
             android:id="@+id/nameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <!--Paired devices mac ID-->
         <TextView
             android:id="@+id/macAddressTv"
             android:layout_width="wrap_content"
@@ -39,5 +35,18 @@
             android:layout_toRightOf="@id/nameTv" />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/deviceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="322dp"
+        android:text="send something"
+        tools:ignore="MissingConstraints" />
 
 </RelativeLayout>
