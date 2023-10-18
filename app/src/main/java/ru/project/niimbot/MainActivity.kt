@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
             Log.d("XXX", "$address")
             jcapi.init(application)
-            jcapi.initImageProcessingDefault("", "")
+            jcapi.initImageProcessingDefault("Ыщьу мфдгу", "ЛОИГРГЛРЛР")
             jcapi.openPrinterByAddress(address)
             jcapi.setTotalQuantityOfPrints(1)
             jcapi.startPrintJob(2, 3, 1, printCallback)
