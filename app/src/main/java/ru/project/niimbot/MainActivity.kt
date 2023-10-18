@@ -153,9 +153,10 @@ class MainActivity : AppCompatActivity() {
             jcapi.setTotalQuantityOfPrints(1)
             jcapi.startPrintJob(2, 3, 1, printCallback)
 //            jcapi.drawLabelImage(image, 50.0F, 50.0F, 50.0F, 50.0F, 0, 2, 127F)
-            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
-                0F,
-                1F, arrayOf(false, false, false, false).toBooleanArray())
+//            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
+//                0F,
+//                1F, arrayOf(false, false, false, false).toBooleanArray())
+            jcapi.drawLabelLine(40f, 40f, 40f, 10f, 0, 1, floatArrayOf())
 
         jcapi.endJob()
         }
