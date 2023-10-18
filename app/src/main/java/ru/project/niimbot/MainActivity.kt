@@ -71,6 +71,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onError(p0: Int, p1: Int) {
+            Log.d("XXX", "1=Печать приостановлена, 2=Печать остановлена p0 = $p0")
+            Log.d("XXX", "1=Печать приостановлена, 2=Печать остановлена p1 = $p1")
             Log.d("XXX", "Какая то ошибка printCallback 2")
         }
 
