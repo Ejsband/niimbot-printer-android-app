@@ -152,7 +152,8 @@ class MainActivity : AppCompatActivity() {
             jcapi.openPrinterByAddress(address)
             jcapi.setTotalQuantityOfPrints(1)
             jcapi.startPrintJob(2, 3, 2, printCallback)
-            jcapi.drawLabelImage(image, 50.0F, 50.0F, 100.0F, 100.0F, 0, 1, 127F)
+            jcapi.drawLabelImage(image, 50.0F, 50.0F, 50.0F, 50.0F, 0, 2, 127F)
+
             jcapi.endJob()
         }
     }
