@@ -25,32 +25,39 @@ class MainActivity : AppCompatActivity() {
     private val mCallback = object : Callback {
 
         override fun onConnectSuccess(p0: String?) {
-            Log.d("XXX", "Connection success")
+            Log.d("XXX", "Подключение к девайсу")
         }
 
         override fun onDisConnect() {
-            Log.d("XXX", "Disconnected from device")
+            Log.d("XXX", "Отключение от девайса")
         }
 
         override fun onElectricityChange(p0: Int) {
+            Log.d("XXX", "Что то с электрической сетью")
         }
 
         override fun onCoverStatus(p0: Int) {
+            Log.d("XXX", "Что то со статусом ковер")
         }
 
         override fun onPaperStatus(p0: Int) {
+            Log.d("XXX", "Что то с бумагой")
         }
 
         override fun onRfidReadStatus(p0: Int) {
+            Log.d("XXX", "Что то с onRfidReadStatus")
         }
 
         override fun onPrinterIsFree(p0: Int) {
+            Log.d("XXX", "Принтер свободен")
         }
 
         override fun onHeartDisConnect() {
+            Log.d("XXX", "Что то с onHeartDisConnect")
         }
 
         override fun onFirmErrors() {
+            Log.d("XXX", "Какая то ошибка")
         }
     }
 
@@ -60,19 +67,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onError(p0: Int) {
-
+            Log.d("XXX", "Какая то ошибка printCallback")
         }
 
         override fun onError(p0: Int, p1: Int) {
-
+            Log.d("XXX", "Какая то ошибка printCallback 2")
         }
 
         override fun onCancelJob(p0: Boolean) {
-
+            Log.d("XXX", "Отмена работы")
         }
 
         override fun onBufferFree(p0: Int, p1: Int) {
-
+            Log.d("XXX", "Буфер пуст")
         }
 
     }
