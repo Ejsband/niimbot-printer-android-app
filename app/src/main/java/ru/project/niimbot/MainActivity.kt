@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     private val printCallback = object : PrintCallback {
         override fun onProgress(p0: Int, p1: Int, p2: HashMap<String, Any>?) {
-
+            Log.d("XXX", "Должно что то там печататься")
         }
 
         override fun onError(p0: Int) {
@@ -148,17 +148,19 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
             Log.d("XXX", "$address")
             jcapi.init(application)
-            jcapi.initImageProcessingDefault("Ыщьу мфдгу", "ЛОИГРГЛРЛР")
+            jcapi.initImageProcessingDefault("", "")
             jcapi.openPrinterByAddress(address)
             jcapi.setTotalQuantityOfPrints(1)
             jcapi.startPrintJob(2, 3, 1, printCallback)
 //            jcapi.drawLabelImage(image, 50.0F, 50.0F, 50.0F, 50.0F, 0, 2, 127F)
-//            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
-//                0F,
-//                1F, arrayOf(false, false, false, false).toBooleanArray())
-            jcapi.drawLabelLine(40f, 40f, 40f, 10f, 0, 1, floatArrayOf())
+            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
+                0F,
+                1F, arrayOf(false, false, false, false).toBooleanArray())
+//            jcapi.drawLabelLine(40f, 40f, 40f, 10f, 0, 1, floatArrayOf())
 
-        jcapi.endJob()
+
+
+//        jcapi.endJob()
         }
     }
 
