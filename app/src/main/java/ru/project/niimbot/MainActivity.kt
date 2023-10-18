@@ -81,12 +81,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBufferFree(p0: Int, p1: Int) {
-
-            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
-                0F,
-                1F, arrayOf(false, false, false, false).toBooleanArray())
-
-            jcapi.endJob()
             Log.d("XXX", "Буфер пуст")
         }
 
@@ -157,11 +151,17 @@ class MainActivity : AppCompatActivity() {
             jcapi.openPrinterByAddress(address)
             jcapi.initImageProcessingDefault("", "")
             jcapi.setTotalQuantityOfPrints(1)
-            jcapi.startPrintJob(2, 3, 1, printCallback)
+            jcapi.startJob(2, 3, 1, printCallback)
+//            jcapi.startPrintJob(2, 3, 1, printCallback)
 //            jcapi.drawLabelImage(image, 50.0F, 50.0F, 50.0F, 50.0F, 0, 2, 127F)
 
 //            jcapi.drawLabelLine(40f, 40f, 40f, 10f, 0, 1, floatArrayOf())
 
+            jcapi.drawLabelText(0f, 0f, 40f, 10f, "电量发⽣变化", "电量发⽣变化", 12 * 1.5F, 0, 1, 1, 6,
+                0F,
+                1F, arrayOf(false, false, false, false).toBooleanArray())
+
+            jcapi.endJob()
         }
     }
 
