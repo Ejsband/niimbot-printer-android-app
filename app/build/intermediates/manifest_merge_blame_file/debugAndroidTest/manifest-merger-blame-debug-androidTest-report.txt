@@ -1,0 +1,34 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ru.project.niimbot.test" >
+4
+5    <uses-sdk
+5-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:5:5-74
+6        android:minSdkVersion="26"
+6-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:5:15-41
+7        android:targetSdkVersion="33" />
+7-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:5:42-71
+8
+9    <instrumentation
+9-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:11:5-15:68
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:11:22-76
+11        android:functionalTest="false"
+11-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:14:22-52
+12        android:handleProfiling="false"
+12-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:13:22-53
+13        android:label="Tests for ru.project.niimbot"
+13-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:15:22-66
+14        android:targetPackage="ru.project.niimbot" />
+14-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:12:22-64
+15
+16    <application
+16-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:7:5-9:19
+17        android:debuggable="true"
+18        android:extractNativeLibs="false" >
+19        <uses-library android:name="android.test.runner" />
+19-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:8:9-60
+19-->D:\Projects\niimbot-printer-android-app\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest9734402030014417227.xml:8:23-57
+20    </application>
+21
+22</manifest>
