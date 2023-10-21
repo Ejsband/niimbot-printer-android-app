@@ -122,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         var isCancel = false
         val pageCount = 1
         val quantity = 1
-        val printMode = 0
+        val printMode = 1
         val printDensity = 0
         val printMultiple = 8.0f
 
