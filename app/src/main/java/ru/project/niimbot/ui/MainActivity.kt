@@ -122,9 +122,9 @@ class MainActivity : AppCompatActivity() {
         var isCancel = false
         val pageCount = 1
         val quantity = 1
-        val printMode = 1
-        val printDensity = 0
-//        val printMultiple = 8.0f
+        val printMode = 2
+        val printDensity = 8
+        val printMultiple = 11.81f
 
         val width = 80f
         val height = 50f
@@ -219,8 +219,8 @@ class MainActivity : AppCompatActivity() {
                         val paint = Paint()
                         val canvas = Canvas()
                         val backgroundBitmap = Bitmap.createBitmap(
-                            (width).toInt(),
-                            (height).toInt(),
+                            (width * printMultiple).toInt(),
+                            (height * printMultiple).toInt(),
                             Bitmap.Config.ARGB_8888
                         )
                         canvas.setBitmap(backgroundBitmap)
@@ -228,8 +228,8 @@ class MainActivity : AppCompatActivity() {
                         if (bitmap != null) {
                             canvas.drawBitmap(
                                 bitmap,
-                                offsetX,
-                                offsetY,
+                                offsetX * printMultiple,
+                                offsetY * printMultiple,
                                 paint
                             )
                         }
