@@ -155,8 +155,8 @@ class MainActivity : AppCompatActivity() {
 
         val printMultiple = 8f
 
-        val width = 120f
-        val height = 75f
+        val width = 75f
+        val height = 120f
         val orientation = 0
 
         val generatedPrintDataPageCount = intArrayOf(0)
