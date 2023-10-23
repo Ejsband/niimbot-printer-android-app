@@ -28,6 +28,8 @@ import ru.project.niimbot.R
 
 class MainActivity : AppCompatActivity() {
 
+    private var printDensity = 3
+
     private lateinit var printer: JCPrintApi
 
     val callback: Callback = object : Callback {
@@ -73,7 +75,9 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.btnGet)
 
-        val deviceButton = findViewById<Button>(R.id.deviceButton)
+        val deviceButton0 = findViewById<Button>(R.id.deviceButton0)
+        val deviceButton1 = findViewById<Button>(R.id.deviceButton1)
+        val deviceButton2 = findViewById<Button>(R.id.deviceButton2)
 
         btn.setOnClickListener {
 
@@ -100,14 +104,39 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        deviceButton.setOnClickListener {
-            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
-            Log.d("XXX", "$address")
+        deviceButton0.setOnClickListener {
+//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
+//            Log.d("XXX", "$address")
 
             printer = JCPrintApi.getInstance(callback)
             printer.init(NiibotApplication().getNiibotApplicationInstance())
             printer.initImageProcessingDefault("", "")
             printer.openPrinterByAddress(address)
+            printDensity = 1
+            printImage()
+        }
+
+        deviceButton1.setOnClickListener {
+//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
+//            Log.d("XXX", "$address")
+
+            printer = JCPrintApi.getInstance(callback)
+            printer.init(NiibotApplication().getNiibotApplicationInstance())
+            printer.initImageProcessingDefault("", "")
+            printer.openPrinterByAddress(address)
+            printDensity = 2
+            printImage()
+        }
+
+        deviceButton2.setOnClickListener {
+//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
+//            Log.d("XXX", "$address")
+
+            printer = JCPrintApi.getInstance(callback)
+            printer.init(NiibotApplication().getNiibotApplicationInstance())
+            printer.initImageProcessingDefault("", "")
+            printer.openPrinterByAddress(address)
+            printDensity = 3
             printImage()
         }
     }
@@ -123,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         val pageCount = 1
         val quantity = 1
         val printMode = 1
-        val printDensity = 2
+
         val printMultiple = 8f
 
         val width = 80f
@@ -208,7 +237,7 @@ class MainActivity : AppCompatActivity() {
                         val assetManager = resources.assets
                         var bitmap: Bitmap? = null
                         try {
-                            val image = assetManager.open("111.png")
+                            val image = assetManager.open("222.png")
                             bitmap = BitmapFactory.decodeStream(image)
                             image.close()
                         } catch (e: Exception) {

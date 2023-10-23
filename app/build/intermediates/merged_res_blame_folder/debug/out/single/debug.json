@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-merged_res-32:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-main-34:\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-merged_res-32:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-merged_res-32:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-main-34:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\ELI\\.gradle\\daemon\\8.0\\ru.project.niimbot.app-merged_res-32:\\xml_data_extraction_rules.xml.flat",
