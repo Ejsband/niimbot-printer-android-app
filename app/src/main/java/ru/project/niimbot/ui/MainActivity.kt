@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                         val assetManager = resources.assets
                         var bitmap: Bitmap? = null
                         try {
-                            val image = assetManager.open("111.png")
+                            val image = assetManager.open("111.pdf")
                             bitmap = BitmapFactory.decodeStream(image)
                             image.close()
                         } catch (e: Exception) {
