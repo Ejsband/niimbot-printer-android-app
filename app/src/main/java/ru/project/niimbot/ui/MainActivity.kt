@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         val pageCount = 1
         val quantity = 1
         val printMode = 1
-        val printDensity = 3
+        val printDensity = 2
         val printMultiple = 8f
 
         val width = 80f
@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                         val assetManager = resources.assets
                         var bitmap: Bitmap? = null
                         try {
-                            val image = assetManager.open("111.pdf")
+                            val image = assetManager.open("111.png")
                             bitmap = BitmapFactory.decodeStream(image)
                             image.close()
                         } catch (e: Exception) {
