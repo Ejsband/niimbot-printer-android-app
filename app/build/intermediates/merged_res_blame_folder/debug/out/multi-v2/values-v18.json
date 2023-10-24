@@ -4,7 +4,7 @@
             "outputFile": "ru.project.niimbot.app-mergeDebugResources-30:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ELI\\.gradle\\caches\\transforms-3\\ea81018398a5eb9877f0ba4a04db551f\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/ea81018398a5eb9877f0ba4a04db551f/transformed/appcompat-1.6.1/res/values-v18/values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

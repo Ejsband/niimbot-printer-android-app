@@ -3,12 +3,8 @@ package ru.project.niimbot.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
+import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +20,9 @@ import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
 import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,9 +35,11 @@ class MainActivity : AppCompatActivity() {
         override fun onConnectSuccess(s: String) {
             Log.d("XXX", "Подключение к принтеру.")
         }
+
         override fun onDisConnect() {
             Log.d("XXX", "Отключение от принтера")
         }
+
         override fun onElectricityChange(i: Int) {}
         override fun onCoverStatus(i: Int) {}
         override fun onPaperStatus(i: Int) {}
@@ -82,12 +83,14 @@ class MainActivity : AppCompatActivity() {
         btn.setOnClickListener {
 
             if (bAdapter == null) {
-                Toast.makeText(applicationContext, "Bluetooth Not Supported", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Bluetooth Not Supported", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 if (ActivityCompat.checkSelfPermission(
                         this,
                         Manifest.permission.BLUETOOTH_CONNECT
-                    ) != PackageManager.PERMISSION_GRANTED) {
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
                     val pairedDevices = bAdapter.bondedDevices
                     if (pairedDevices.size > 0) {
                         for (device in pairedDevices) {
@@ -113,7 +116,8 @@ class MainActivity : AppCompatActivity() {
             printer.initImageProcessingDefault("", "")
             printer.openPrinterByAddress(address)
             printDensity = 1
-            printImage()
+//            printImage()
+            printPicture()
         }
 
         deviceButton1.setOnClickListener {
@@ -125,7 +129,8 @@ class MainActivity : AppCompatActivity() {
             printer.initImageProcessingDefault("", "")
             printer.openPrinterByAddress(address)
             printDensity = 2
-            printImage()
+//            printImage()
+            printPicture()
         }
 
         deviceButton2.setOnClickListener {
@@ -137,11 +142,13 @@ class MainActivity : AppCompatActivity() {
             printer.initImageProcessingDefault("", "")
             printer.openPrinterByAddress(address)
             printDensity = 3
-            printImage()
+//            printImage()
+            printPicture()
         }
     }
 
-    private fun printImage() {
+    private fun printPicture() {
+
         if (printer.isConnection != 0) {
             Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
             return
@@ -152,136 +159,270 @@ class MainActivity : AppCompatActivity() {
         val pageCount = 1
         val quantity = 1
         val printMode = 1
-
         val printMultiple = 8f
-
         val width = 75f
         val height = 120f
         val orientation = 0
-
-        val generatedPrintDataPageCount = intArrayOf(0)
         val totalQuantity = pageCount * quantity
+        val jsonList = ArrayList<String>()
+        val infoList = ArrayList<String>()
+        val jsonInfo = "{  " +
+                "\"printerImageProcessingInfo\": " + "{    " +
+                "\"orientation\":" + orientation + "," +
+                "   \"margin\": [      0,      0,      0,      0    ], " +
+                "   \"printQuantity\": " + quantity + ",  " +
+                "  \"horizontalOffset\": 0,  " +
+                "  \"verticalOffset\": 0,  " +
+                "  \"width\":" + width + "," +
+                "   \"height\":" + height + "," +
+                "\"printMultiple\":" + printMultiple + "," +
+                "  \"epc\": \"\"  }}"
+
+        infoList.add(jsonInfo)
+        printer.drawEmptyLabel(width, height, orientation, "")
+        val imageData: String = getJson(this, "image.json").replace("\"", "")
+        printer.drawLabelImage(imageData, 0F, 0F, width, height, 0, 1, 127F)
+        val jsonByte: ByteArray = printer.generateLabelJson()
+        val jsonStr = jsonByte.toString()
+        jsonList.add(jsonStr)
 
         printer.setTotalQuantityOfPrints(totalQuantity)
 
-        printer.startPrintJob(
-            printDensity,
-            1,
-            printMode,
-            object : PrintCallback {
+        printer.startPrintJob(printDensity, 1, printMode, object : PrintCallback {
 
-                override fun onProgress(pageIndex: Int, quantityIndex: Int, hashMap: java.util.HashMap<String, Any>) {
-                    if (pageIndex == pageCount && quantityIndex == quantity) {
-                        if (printer.endJob()) {
-                            Log.d("XXX", "Успешное завершение печати")
-                        } else {
-                            Log.d("XXX", "Не удалось завершить печать")
-                        }
+            override fun onProgress(
+                pageIndex: Int,
+                quantityIndex: Int,
+                hashMap: HashMap<String, Any>
+            ) {
+                if (pageIndex == pageCount && quantityIndex == quantity) {
+                    if (printer.endJob()) {
+                        Log.d("XXX", "Успешное завершение печати")
+                    } else {
+                        Log.d("XXX", "Не удалось завершить печать")
                     }
                 }
+            }
 
-                override fun onError(i: Int) {}
+            override fun onError(i: Int) {}
 
-                override fun onError(errorCode: Int, printState: Int) {
-                    isError = true
-                    var errorMessage = ""
-                    when (errorCode) {
-                        1 -> errorMessage = "Открыта крышка"
-                        2 -> errorMessage = "Нехватка бумаги"
-                        3 -> errorMessage = "Низкий заряд батареи"
-                        4 -> errorMessage = "Неисправная батарея"
-                        5 -> errorMessage = "Ручная остановка печати"
-                        6 -> errorMessage = "Ошибка данных"
-                        7 -> errorMessage = "Принтер перегрелся"
-                        8 -> errorMessage = "Ненормальный выход бумаги"
-                        9 -> errorMessage = "Ошибка печати"
-                        10 -> errorMessage = "Печатающая головка не обнаружена"
-                        11 -> errorMessage = "Температура окружающей среды слишком низкая"
-                        12 -> errorMessage = "Печатающая головка не заблокирована"
-                        13 -> errorMessage = "Лента не обнаружена"
-                        14 -> errorMessage = "Несоответствующая лента"
-                        15 -> errorMessage = "Лента закончилась"
-                        16 -> errorMessage = "Неподдерживаемые типы бумаги"
-                        17 -> errorMessage = "Не удалось установить тип бумаги"
-                        18 -> errorMessage = "Сбой настройки режима печати"
-                        19 -> errorMessage = "Не удалось установить концентрацию"
-                        20 -> errorMessage = "Ошибка rfid записи"
-                        21 -> errorMessage = "Не удалось настроить поля"
-                        22 -> errorMessage = "Нарушение связи с принтером"
-                        23 -> errorMessage = "Принтер отключен"
-                        24 -> errorMessage = "Ошибка параметра чертежной доски"
-                        25 -> errorMessage = "Неправильный угол поворота"
-                        26 -> errorMessage = "ошибка json параметра"
-                        27 -> errorMessage = "Ненормальный выход бумаги"
-                        28 -> errorMessage = "Проверьте тип бумаги"
-                        29 -> errorMessage = "RFID-метка не была записана"
-                        30 -> errorMessage = "Настройка концентрации не поддерживается"
-                        31 -> errorMessage = "Неподдерживаемый режим печати"
-                        else -> {}
-                    }
-                    Log.d("XXX", "Произошла ошибка: $errorMessage")
+            override fun onError(errorCode: Int, printState: Int) {
+                isError = true
+                var errorMessage = ""
+                when (errorCode) {
+                    1 -> errorMessage = "Открыта крышка"
+                    2 -> errorMessage = "Нехватка бумаги"
+                    3 -> errorMessage = "Низкий заряд батареи"
+                    4 -> errorMessage = "Неисправная батарея"
+                    5 -> errorMessage = "Ручная остановка печати"
+                    6 -> errorMessage = "Ошибка данных"
+                    7 -> errorMessage = "Принтер перегрелся"
+                    8 -> errorMessage = "Ненормальный выход бумаги"
+                    9 -> errorMessage = "Ошибка печати"
+                    10 -> errorMessage = "Печатающая головка не обнаружена"
+                    11 -> errorMessage = "Температура окружающей среды слишком низкая"
+                    12 -> errorMessage = "Печатающая головка не заблокирована"
+                    13 -> errorMessage = "Лента не обнаружена"
+                    14 -> errorMessage = "Несоответствующая лента"
+                    15 -> errorMessage = "Лента закончилась"
+                    16 -> errorMessage = "Неподдерживаемые типы бумаги"
+                    17 -> errorMessage = "Не удалось установить тип бумаги"
+                    18 -> errorMessage = "Сбой настройки режима печати"
+                    19 -> errorMessage = "Не удалось установить концентрацию"
+                    20 -> errorMessage = "Ошибка rfid записи"
+                    21 -> errorMessage = "Не удалось настроить поля"
+                    22 -> errorMessage = "Нарушение связи с принтером"
+                    23 -> errorMessage = "Принтер отключен"
+                    24 -> errorMessage = "Ошибка параметра чертежной доски"
+                    25 -> errorMessage = "Неправильный угол поворота"
+                    26 -> errorMessage = "ошибка json параметра"
+                    27 -> errorMessage = "Ненормальный выход бумаги"
+                    28 -> errorMessage = "Проверьте тип бумаги"
+                    29 -> errorMessage = "RFID-метка не была записана"
+                    30 -> errorMessage = "Настройка концентрации не поддерживается"
+                    31 -> errorMessage = "Неподдерживаемый режим печати"
+                    else -> {}
                 }
+                Log.d("XXX", "Произошла ошибка: $errorMessage")
+            }
 
-                override fun onCancelJob(isSuccess: Boolean) {
-                    isCancel = true
-                }
+            override fun onCancelJob(isSuccess: Boolean) {
+                isCancel = true
+            }
 
-                override fun onBufferFree(pageIndex: Int, bufferSize: Int) {
-                    if (isError) {
-                        return
-                    }
-                    if (pageIndex > pageCount) {
-                        return
-                    }
-                    if (generatedPrintDataPageCount[0] < pageCount) {
-                        val assetManager = resources.assets
-                        var bitmap: Bitmap? = null
-                        try {
-                            val image = assetManager.open("222.png")
-                            bitmap = BitmapFactory.decodeStream(image)
-                            image.close()
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                        val offsetX = 0.0f
-                        val offsetY = 0.0f
-                        val paint = Paint()
-                        val canvas = Canvas()
-                        val backgroundBitmap = Bitmap.createBitmap(
-                            (width * printMultiple).toInt(),
-                            (height * printMultiple).toInt(),
-                            Bitmap.Config.ARGB_8888
-                        )
-                        canvas.setBitmap(backgroundBitmap)
-                        canvas.drawColor(Color.WHITE)
-                        if (bitmap != null) {
-                            canvas.drawBitmap(
-                                bitmap,
-                                offsetX * printMultiple,
-                                offsetY * printMultiple,
-                                paint
-                            )
-                        }
-                        val commitDataLength =
-                            Math.min(pageCount - generatedPrintDataPageCount[0], bufferSize)
-                        for (i in 0 until pageCount - generatedPrintDataPageCount[0]) {
-                            printer.commitImageData(
-                                orientation,
-                                backgroundBitmap,
-                                width.toInt(),
-                                height.toInt(),
-                                1,
-                                0,
-                                0,
-                                0,
-                                0,
-                                ""
-                            )
-                        }
-                        generatedPrintDataPageCount[0] += commitDataLength
-                    }
+            override fun onBufferFree(pageIndex: Int, bufferSize: Int) {
+                if (isError) {
+                    return
                 }
-            })
+                if (pageIndex > pageCount) {
+                    return
+                }
+                printer.commitData(jsonList, infoList)
+            }
+        }
+        )
+    }
+
+//    private fun printImage() {
+//        if (printer.isConnection != 0) {
+//            Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
+//            return
+//        }
+//
+//        var isError = false
+//        var isCancel = false
+//        val pageCount = 1
+//        val quantity = 1
+//        val printMode = 1
+//
+//        val printMultiple = 8f
+//
+//        val width = 75f
+//        val height = 120f
+//        val orientation = 0
+//
+//        val generatedPrintDataPageCount = intArrayOf(0)
+//        val totalQuantity = pageCount * quantity
+//
+//        printer.setTotalQuantityOfPrints(totalQuantity)
+//
+//        printer.startPrintJob(
+//            printDensity,
+//            1,
+//            printMode,
+//            object : PrintCallback {
+//
+//                override fun onProgress(pageIndex: Int, quantityIndex: Int, hashMap: java.util.HashMap<String, Any>) {
+//                    if (pageIndex == pageCount && quantityIndex == quantity) {
+//                        if (printer.endJob()) {
+//                            Log.d("XXX", "Успешное завершение печати")
+//                        } else {
+//                            Log.d("XXX", "Не удалось завершить печать")
+//                        }
+//                    }
+//                }
+//
+//                override fun onError(i: Int) {}
+//
+//                override fun onError(errorCode: Int, printState: Int) {
+//                    isError = true
+//                    var errorMessage = ""
+//                    when (errorCode) {
+//                        1 -> errorMessage = "Открыта крышка"
+//                        2 -> errorMessage = "Нехватка бумаги"
+//                        3 -> errorMessage = "Низкий заряд батареи"
+//                        4 -> errorMessage = "Неисправная батарея"
+//                        5 -> errorMessage = "Ручная остановка печати"
+//                        6 -> errorMessage = "Ошибка данных"
+//                        7 -> errorMessage = "Принтер перегрелся"
+//                        8 -> errorMessage = "Ненормальный выход бумаги"
+//                        9 -> errorMessage = "Ошибка печати"
+//                        10 -> errorMessage = "Печатающая головка не обнаружена"
+//                        11 -> errorMessage = "Температура окружающей среды слишком низкая"
+//                        12 -> errorMessage = "Печатающая головка не заблокирована"
+//                        13 -> errorMessage = "Лента не обнаружена"
+//                        14 -> errorMessage = "Несоответствующая лента"
+//                        15 -> errorMessage = "Лента закончилась"
+//                        16 -> errorMessage = "Неподдерживаемые типы бумаги"
+//                        17 -> errorMessage = "Не удалось установить тип бумаги"
+//                        18 -> errorMessage = "Сбой настройки режима печати"
+//                        19 -> errorMessage = "Не удалось установить концентрацию"
+//                        20 -> errorMessage = "Ошибка rfid записи"
+//                        21 -> errorMessage = "Не удалось настроить поля"
+//                        22 -> errorMessage = "Нарушение связи с принтером"
+//                        23 -> errorMessage = "Принтер отключен"
+//                        24 -> errorMessage = "Ошибка параметра чертежной доски"
+//                        25 -> errorMessage = "Неправильный угол поворота"
+//                        26 -> errorMessage = "ошибка json параметра"
+//                        27 -> errorMessage = "Ненормальный выход бумаги"
+//                        28 -> errorMessage = "Проверьте тип бумаги"
+//                        29 -> errorMessage = "RFID-метка не была записана"
+//                        30 -> errorMessage = "Настройка концентрации не поддерживается"
+//                        31 -> errorMessage = "Неподдерживаемый режим печати"
+//                        else -> {}
+//                    }
+//                    Log.d("XXX", "Произошла ошибка: $errorMessage")
+//                }
+//
+//                override fun onCancelJob(isSuccess: Boolean) {
+//                    isCancel = true
+//                }
+//
+//                override fun onBufferFree(pageIndex: Int, bufferSize: Int) {
+//                    if (isError) {
+//                        return
+//                    }
+//                    if (pageIndex > pageCount) {
+//                        return
+//                    }
+//                    if (generatedPrintDataPageCount[0] < pageCount) {
+//                        val assetManager = resources.assets
+//                        var bitmap: Bitmap? = null
+//                        try {
+//                            val image = assetManager.open("222.png")
+//                            bitmap = BitmapFactory.decodeStream(image)
+//                            image.close()
+//                        } catch (e: Exception) {
+//                            e.printStackTrace()
+//                        }
+//                        val offsetX = 0.0f
+//                        val offsetY = 0.0f
+//                        val paint = Paint()
+//                        val canvas = Canvas()
+//                        val backgroundBitmap = Bitmap.createBitmap(
+//                            (width * printMultiple).toInt(),
+//                            (height * printMultiple).toInt(),
+//                            Bitmap.Config.ARGB_8888
+//                        )
+//                        canvas.setBitmap(backgroundBitmap)
+//                        canvas.drawColor(Color.WHITE)
+//                        if (bitmap != null) {
+//                            canvas.drawBitmap(
+//                                bitmap,
+//                                offsetX * printMultiple,
+//                                offsetY * printMultiple,
+//                                paint
+//                            )
+//                        }
+//                        val commitDataLength =
+//                            Math.min(pageCount - generatedPrintDataPageCount[0], bufferSize)
+//                        for (i in 0 until pageCount - generatedPrintDataPageCount[0]) {
+//                            printer.commitImageData(
+//                                orientation,
+//                                backgroundBitmap,
+//                                width.toInt(),
+//                                height.toInt(),
+//                                1,
+//                                0,
+//                                0,
+//                                0,
+//                                0,
+//                                ""
+//                            )
+//                        }
+//                        generatedPrintDataPageCount[0] += commitDataLength
+//                    }
+//                }
+//            })
+//    }
+
+    private fun getJson(context: Context, fileName: String): String {
+        val stringBuilder = StringBuilder()
+        try {
+            val assetManager = context.assets
+            val bf = BufferedReader(
+                InputStreamReader(
+                    assetManager.open(fileName)
+                )
+            )
+            var line: String?
+            while (bf.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return stringBuilder.toString()
     }
 
     private fun checkPermissions() {
