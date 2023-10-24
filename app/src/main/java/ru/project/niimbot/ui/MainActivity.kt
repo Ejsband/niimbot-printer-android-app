@@ -166,12 +166,12 @@ class MainActivity : AppCompatActivity() {
         val totalQuantity = pageCount * quantity
         val jsonList = ArrayList<String>()
         val infoList = ArrayList<String>()
-        val jsonInfo = "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
+        val jsonInfo = "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
         infoList.add(jsonInfo)
         printer.drawEmptyLabel(width, height, orientation, "")
         val imageData: String = getJson(this, "image.json").replace("\"", "")
-        printer.drawLabelImage(imageData, 0F, -10F, width, height, 0, 1, 127F)
+        printer.drawLabelImage(imageData, 0F, 0F, width, height, 0, 1, 127F)
         val jsonByte: ByteArray = printer.generateLabelJson()
         val jsonStr = jsonByte.decodeToString()
         jsonList.add(jsonStr)
