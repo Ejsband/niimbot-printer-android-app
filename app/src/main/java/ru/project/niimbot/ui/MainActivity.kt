@@ -108,11 +108,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         deviceButton2.setOnClickListener {
-//            printer = JCPrintApi.getInstance(callback)
-//            printer.init(NiibotApplication().getNiibotApplicationInstance())
-//            printer.initImageProcessingDefault("", "")
-//            printer.openPrinterByAddress(address)
-//            printDensity = 3
+            printer = JCPrintApi.getInstance(callback)
+            printer.init(NiibotApplication().getNiibotApplicationInstance())
+            printer.initImageProcessingDefault("", "")
+            printer.openPrinterByAddress(address)
+            printDensity = 3
             printPicture()
 
 //            getBase()
