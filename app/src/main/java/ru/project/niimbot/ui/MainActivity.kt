@@ -15,13 +15,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.gengcon.www.jcprintersdk.JCPrintApi
 import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.apache.commons.io.IOUtils
-import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
 import java.io.BufferedReader
+import java.io.File
+import java.io.FileInputStream
 import java.io.IOException
 import java.io.InputStreamReader
 import java.util.Base64
@@ -108,14 +113,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         deviceButton2.setOnClickListener {
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(address)
-            printDensity = 3
-            printPicture()
+//            printer = JCPrintApi.getInstance(callback)
+//            printer.init(NiibotApplication().getNiibotApplicationInstance())
+//            printer.initImageProcessingDefault("", "")
+//            printer.openPrinterByAddress(address)
+//            printDensity = 3
+//            printPicture()
 
-//            getBase()
+            openFile("123.png")
         }
     }
 
@@ -268,6 +273,7 @@ class MainActivity : AppCompatActivity() {
 
         shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
         shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
+        shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     companion object {
@@ -282,6 +288,7 @@ class MainActivity : AppCompatActivity() {
             }
             add(Manifest.permission.ACCESS_FINE_LOCATION)
             add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }.toTypedArray()
     }
 
@@ -290,4 +297,66 @@ class MainActivity : AppCompatActivity() {
         return Base64.getEncoder().encodeToString(bytes)
 
     }
+
+    private fun openFile(name: String) {
+        val file = File("storage/emulated/0/Download", name)
+
+        this.lifecycleScope.launch {
+
+            val inputAsString = withContext(Dispatchers.IO) {
+                IOUtils.toByteArray(FileInputStream(file))
+            }
+            Log.d("XXX", Base64.getEncoder().encodeToString(inputAsString))
+        }
+
+
+
+//        val viewImageIntent = Intent(Intent.ACTION_VIEW)
+//        viewImageIntent.setDataAndType(Uri.parse(imagePath), "image/*")
+//        startActivity(viewImageIntent)
+    }
+
+//    private fun saveImageToInternalStorage(
+//        context: Context,
+//        bitmapFutureTarget: FutureTarget<Bitmap>,
+//        fileName: String
+//    ) {
+//
+//        this.lifecycleScope.launch {
+//
+//            val bitmap: Bitmap = withContext(Dispatchers.IO) {
+//                bitmapFutureTarget.get()
+//            }
+//
+//            val directory = File("/storage/emulated/0/Pictures")
+//
+//            if (!directory.exists()) {
+//                directory.mkdirs()
+//            }
+//
+//            val file = File(directory, fileName)
+//
+//            try {
+//                withContext(Dispatchers.IO) {
+//                    val outputStream = FileOutputStream(file)
+//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+//                    outputStream.flush()
+//                    outputStream.close()
+//                }
+//
+//                Toast.makeText(
+//                    context,
+//                    "File $fileName was saved!",
+//                    Toast.LENGTH_LONG
+//                ).show()
+//
+//            } catch (e: IOException) {
+//                Toast.makeText(
+//                    context,
+//                    "Unable to save the file!",
+//                    Toast.LENGTH_LONG
+//                ).show()
+//            }
+//        }
+//    }
 }

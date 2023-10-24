@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "ru.project.niimbot.app-mergeDebugResources-30:/values-pa/values-pa.xml",
+            "outputFile": "ru.project.niimbot.app-mergeDebugResources-34:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/63382362199d553975ec785d0a1c3d4b/transformed/material-1.10.0/res/values-pa/values-pa.xml",
