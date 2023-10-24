@@ -5,8 +5,6 @@ color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 id btnGet
-id deviceButton0
-id deviceButton1
 id deviceButton2
 id info
 id macAddressTv

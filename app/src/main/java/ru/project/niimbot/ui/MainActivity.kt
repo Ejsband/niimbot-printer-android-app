@@ -18,11 +18,13 @@ import androidx.core.content.ContextCompat
 import com.gengcon.www.jcprintersdk.JCPrintApi
 import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
+import org.apache.commons.io.IOUtils
 import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.util.Base64
 
 
 class MainActivity : AppCompatActivity() {
@@ -76,8 +78,6 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.btnGet)
 
-        val deviceButton0 = findViewById<Button>(R.id.deviceButton0)
-        val deviceButton1 = findViewById<Button>(R.id.deviceButton1)
         val deviceButton2 = findViewById<Button>(R.id.deviceButton2)
 
         btn.setOnClickListener {
@@ -107,43 +107,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        deviceButton0.setOnClickListener {
-//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
-//            Log.d("XXX", "$address")
-
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(address)
-            printDensity = 1
-//            printImage()
-            printPicture()
-        }
-
-        deviceButton1.setOnClickListener {
-//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
-//            Log.d("XXX", "$address")
-
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(address)
-            printDensity = 2
-//            printImage()
-            printPicture()
-        }
-
         deviceButton2.setOnClickListener {
-//            Toast.makeText(this, "Send to $address", Toast.LENGTH_SHORT).show()
-//            Log.d("XXX", "$address")
+//            printer = JCPrintApi.getInstance(callback)
+//            printer.init(NiibotApplication().getNiibotApplicationInstance())
+//            printer.initImageProcessingDefault("", "")
+//            printer.openPrinterByAddress(address)
+//            printDensity = 3
+//            printPicture()
 
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(address)
-            printDensity = 3
-//            printImage()
-            printPicture()
+            getBase()
         }
     }
 
@@ -218,7 +190,7 @@ class MainActivity : AppCompatActivity() {
                     16 -> errorMessage = "Неподдерживаемые типы бумаги"
                     17 -> errorMessage = "Не удалось установить тип бумаги"
                     18 -> errorMessage = "Сбой настройки режима печати"
-                    19 -> errorMessage = "Не удалось установить концентраци"
+                    19 -> errorMessage = "Не удалось установить уровень концентрации тонера"
                     20 -> errorMessage = "Ошибка rfid записи"
                     21 -> errorMessage = "Не удалось настроить поля"
                     22 -> errorMessage = "Нарушение связи с принтером"
@@ -229,7 +201,7 @@ class MainActivity : AppCompatActivity() {
                     27 -> errorMessage = "Ненормальный выход бумаги"
                     28 -> errorMessage = "Проверьте тип бумаги"
                     29 -> errorMessage = "RFID-метка не была записана"
-                    30 -> errorMessage = "Настройка концентрации не поддерживается"
+                    30 -> errorMessage = "Установлен неверный уровень концентрации тонера"
                     31 -> errorMessage = "Неподдерживаемый режим печати"
                     else -> {}
                 }
@@ -253,149 +225,6 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-//    private fun printImage() {
-//        if (printer.isConnection != 0) {
-//            Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//
-//        var isError = false
-//        var isCancel = false
-//        val pageCount = 1
-//        val quantity = 1
-//        val printMode = 1
-//
-//        val printMultiple = 8f
-//
-//        val width = 75f
-//        val height = 120f
-//        val orientation = 0
-//
-//        val generatedPrintDataPageCount = intArrayOf(0)
-//        val totalQuantity = pageCount * quantity
-//
-//        printer.setTotalQuantityOfPrints(totalQuantity)
-//
-//        printer.startPrintJob(
-//            printDensity,
-//            1,
-//            printMode,
-//            object : PrintCallback {
-//
-//                override fun onProgress(pageIndex: Int, quantityIndex: Int, hashMap: java.util.HashMap<String, Any>) {
-//                    if (pageIndex == pageCount && quantityIndex == quantity) {
-//                        if (printer.endJob()) {
-//                            Log.d("XXX", "Успешное завершение печати")
-//                        } else {
-//                            Log.d("XXX", "Не удалось завершить печать")
-//                        }
-//                    }
-//                }
-//
-//                override fun onError(i: Int) {}
-//
-//                override fun onError(errorCode: Int, printState: Int) {
-//                    isError = true
-//                    var errorMessage = ""
-//                    when (errorCode) {
-//                        1 -> errorMessage = "Открыта крышка"
-//                        2 -> errorMessage = "Нехватка бумаги"
-//                        3 -> errorMessage = "Низкий заряд батареи"
-//                        4 -> errorMessage = "Неисправная батарея"
-//                        5 -> errorMessage = "Ручная остановка печати"
-//                        6 -> errorMessage = "Ошибка данных"
-//                        7 -> errorMessage = "Принтер перегрелся"
-//                        8 -> errorMessage = "Ненормальный выход бумаги"
-//                        9 -> errorMessage = "Ошибка печати"
-//                        10 -> errorMessage = "Печатающая головка не обнаружена"
-//                        11 -> errorMessage = "Температура окружающей среды слишком низкая"
-//                        12 -> errorMessage = "Печатающая головка не заблокирована"
-//                        13 -> errorMessage = "Лента не обнаружена"
-//                        14 -> errorMessage = "Несоответствующая лента"
-//                        15 -> errorMessage = "Лента закончилась"
-//                        16 -> errorMessage = "Неподдерживаемые типы бумаги"
-//                        17 -> errorMessage = "Не удалось установить тип бумаги"
-//                        18 -> errorMessage = "Сбой настройки режима печати"
-//                        19 -> errorMessage = "Не удалось установить концентрацию"
-//                        20 -> errorMessage = "Ошибка rfid записи"
-//                        21 -> errorMessage = "Не удалось настроить поля"
-//                        22 -> errorMessage = "Нарушение связи с принтером"
-//                        23 -> errorMessage = "Принтер отключен"
-//                        24 -> errorMessage = "Ошибка параметра чертежной доски"
-//                        25 -> errorMessage = "Неправильный угол поворота"
-//                        26 -> errorMessage = "ошибка json параметра"
-//                        27 -> errorMessage = "Ненормальный выход бумаги"
-//                        28 -> errorMessage = "Проверьте тип бумаги"
-//                        29 -> errorMessage = "RFID-метка не была записана"
-//                        30 -> errorMessage = "Настройка концентрации не поддерживается"
-//                        31 -> errorMessage = "Неподдерживаемый режим печати"
-//                        else -> {}
-//                    }
-//                    Log.d("XXX", "Произошла ошибка: $errorMessage")
-//                }
-//
-//                override fun onCancelJob(isSuccess: Boolean) {
-//                    isCancel = true
-//                }
-//
-//                override fun onBufferFree(pageIndex: Int, bufferSize: Int) {
-//                    if (isError) {
-//                        return
-//                    }
-//                    if (pageIndex > pageCount) {
-//                        return
-//                    }
-//                    if (generatedPrintDataPageCount[0] < pageCount) {
-//                        val assetManager = resources.assets
-//                        var bitmap: Bitmap? = null
-//                        try {
-//                            val image = assetManager.open("222.png")
-//                            bitmap = BitmapFactory.decodeStream(image)
-//                            image.close()
-//                        } catch (e: Exception) {
-//                            e.printStackTrace()
-//                        }
-//                        val offsetX = 0.0f
-//                        val offsetY = 0.0f
-//                        val paint = Paint()
-//                        val canvas = Canvas()
-//                        val backgroundBitmap = Bitmap.createBitmap(
-//                            (width * printMultiple).toInt(),
-//                            (height * printMultiple).toInt(),
-//                            Bitmap.Config.ARGB_8888
-//                        )
-//                        canvas.setBitmap(backgroundBitmap)
-//                        canvas.drawColor(Color.WHITE)
-//                        if (bitmap != null) {
-//                            canvas.drawBitmap(
-//                                bitmap,
-//                                offsetX * printMultiple,
-//                                offsetY * printMultiple,
-//                                paint
-//                            )
-//                        }
-//                        val commitDataLength =
-//                            Math.min(pageCount - generatedPrintDataPageCount[0], bufferSize)
-//                        for (i in 0 until pageCount - generatedPrintDataPageCount[0]) {
-//                            printer.commitImageData(
-//                                orientation,
-//                                backgroundBitmap,
-//                                width.toInt(),
-//                                height.toInt(),
-//                                1,
-//                                0,
-//                                0,
-//                                0,
-//                                0,
-//                                ""
-//                            )
-//                        }
-//                        generatedPrintDataPageCount[0] += commitDataLength
-//                    }
-//                }
-//            })
-//    }
-
     private fun getJson(context: Context, fileName: String): String {
         val stringBuilder = StringBuilder()
         try {
@@ -412,7 +241,8 @@ class MainActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return stringBuilder.toString()
+//        return stringBuilder.toString()
+        return getBase()
     }
 
     private fun checkPermissions() {
@@ -453,5 +283,11 @@ class MainActivity : AppCompatActivity() {
             add(Manifest.permission.ACCESS_FINE_LOCATION)
             add(Manifest.permission.ACCESS_COARSE_LOCATION)
         }.toTypedArray()
+    }
+
+    private fun getBase(): String {
+        val bytes: ByteArray = IOUtils.toByteArray(assets.open("111.png"))
+        return Base64.getEncoder().encodeToString(bytes)
+
     }
 }

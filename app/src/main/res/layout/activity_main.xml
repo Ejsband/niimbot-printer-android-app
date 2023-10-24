@@ -36,29 +36,7 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/deviceButton0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="322dp"
-        android:text="Режим 1" />
 
-    <Button
-        android:id="@+id/deviceButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="245dp"
-        android:text="Режим 2" />
 
     <Button
         android:id="@+id/deviceButton2"

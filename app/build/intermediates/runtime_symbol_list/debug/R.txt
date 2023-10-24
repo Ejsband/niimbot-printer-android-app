@@ -3199,8 +3199,6 @@ int id design_menu_item_action_area 0x7f080092
 int id design_menu_item_action_area_stub 0x7f080093
 int id design_menu_item_text 0x7f080094
 int id design_navigation_view 0x7f080095
-int id deviceButton0 0x7f080096
-int id deviceButton1 0x7f080097
 int id deviceButton2 0x7f080098
 int id dialog_button 0x7f080099
 int id dimensions 0x7f08009a
