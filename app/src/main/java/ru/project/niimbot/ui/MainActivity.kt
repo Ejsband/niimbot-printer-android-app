@@ -171,7 +171,7 @@ class MainActivity : AppCompatActivity() {
         infoList.add(jsonInfo)
         printer.drawEmptyLabel(width, height, orientation, "")
         val imageData: String = getJson(this, "image.json").replace("\"", "")
-        printer.drawLabelImage(imageData, 0F, 0F, width, height, 0, 1, 127F)
+        printer.drawLabelImage(imageData, 0F, -10F, width, height, 0, 1, 127F)
         val jsonByte: ByteArray = printer.generateLabelJson()
         val jsonStr = jsonByte.decodeToString()
         jsonList.add(jsonStr)
