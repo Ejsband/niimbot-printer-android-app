@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         val jsonInfo = "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
         infoList.add(jsonInfo)
-        printer.drawEmptyLabel(width, height, orientation, "")
+//        printer.drawEmptyLabel(width, height, orientation, "")
         val imageData: String = getJson(this, "image.json").replace("\"", "")
         printer.drawLabelImage(imageData, 0F, 0F, width, height, 0, 1, 127F)
         val jsonByte: ByteArray = printer.generateLabelJson()
@@ -218,7 +218,7 @@ class MainActivity : AppCompatActivity() {
                     16 -> errorMessage = "Неподдерживаемые типы бумаги"
                     17 -> errorMessage = "Не удалось установить тип бумаги"
                     18 -> errorMessage = "Сбой настройки режима печати"
-                    19 -> errorMessage = "Не удалось установить концентрацию"
+                    19 -> errorMessage = "Не удалось установить концентраци"
                     20 -> errorMessage = "Ошибка rfid записи"
                     21 -> errorMessage = "Не удалось настроить поля"
                     22 -> errorMessage = "Нарушение связи с принтером"
