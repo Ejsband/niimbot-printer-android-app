@@ -168,14 +168,14 @@ class MainActivity : AppCompatActivity() {
         val infoList = ArrayList<String>()
         val jsonInfo = "{  " +
                 "\"printerImageProcessingInfo\": " + "{    " +
-                "\"orientation\":" + orientation + "," +
+                "\"orientation\":$orientation," +
                 "   \"margin\": [      0,      0,      0,      0    ], " +
-                "   \"printQuantity\": " + quantity + ",  " +
+                "   \"printQuantity\": $quantity,  " +
                 "  \"horizontalOffset\": 0,  " +
                 "  \"verticalOffset\": 0,  " +
-                "  \"width\":" + width + "," +
-                "   \"height\":" + height + "," +
-                "\"printMultiple\":" + printMultiple + "," +
+                "  \"width\":$width," +
+                "   \"height\":$height," +
+                "\"printMultiple\":$printMultiple," +
                 "  \"epc\": \"\"  }}"
 
         infoList.add(jsonInfo)
