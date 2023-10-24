@@ -113,9 +113,9 @@ class MainActivity : AppCompatActivity() {
 //            printer.initImageProcessingDefault("", "")
 //            printer.openPrinterByAddress(address)
 //            printDensity = 3
-//            printPicture()
+            printPicture()
 
-            getBase()
+//            getBase()
         }
     }
 
