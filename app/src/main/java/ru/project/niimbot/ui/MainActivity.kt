@@ -4,7 +4,9 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +14,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -28,6 +31,7 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
+import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.Base64
 
@@ -76,6 +80,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        getIntentData()
+
 
         val tvName = findViewById<TextView>(R.id.nameTv)
 
@@ -120,7 +126,9 @@ class MainActivity : AppCompatActivity() {
 //            printDensity = 3
 //            printPicture()
 
-            openFile("123.png")
+            checkPermissions()
+
+//            openFile("123.png")
         }
     }
 
@@ -143,7 +151,8 @@ class MainActivity : AppCompatActivity() {
         val totalQuantity = pageCount * quantity
         val jsonList = ArrayList<String>()
         val infoList = ArrayList<String>()
-        val jsonInfo = "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
+        val jsonInfo =
+            "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
         infoList.add(jsonInfo)
         printer.drawEmptyLabel(width, height, orientation, "")
@@ -247,72 +256,25 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 //        return stringBuilder.toString()
-        return getBase()
+        return decodeImageToBase64(assets.open("111.png"))
     }
 
-    private fun checkPermissions() {
-        val isAllGranted = REQUEST_PERMISSIONS.all { permission ->
-            ContextCompat.checkSelfPermission(
-                this,
-                permission
-            ) == PackageManager.PERMISSION_GRANTED
-        }
-        if (isAllGranted) {
-            Toast.makeText(this, "All permissions are granted!", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            launcher.launch(REQUEST_PERMISSIONS)
-        }
-        shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH)
-        shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_ADMIN)
 
-        if (Build.VERSION.SDK_INT >= 31) {
-            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_CONNECT)
-            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_SCAN)
-        }
-
-        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
-        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
-        shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
-    }
-
-    companion object {
-        private val REQUEST_PERMISSIONS: Array<String> = buildList {
-            if (Build.VERSION.SDK_INT <= 30) {
-                add(Manifest.permission.BLUETOOTH)
-                add(Manifest.permission.BLUETOOTH_ADMIN)
-            }
-            if (Build.VERSION.SDK_INT >= 31) {
-                add(Manifest.permission.BLUETOOTH_CONNECT)
-                add(Manifest.permission.BLUETOOTH_SCAN)
-            }
-            add(Manifest.permission.ACCESS_FINE_LOCATION)
-            add(Manifest.permission.ACCESS_COARSE_LOCATION)
-            add(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }.toTypedArray()
-    }
-
-    private fun getBase(): String {
-        val bytes: ByteArray = IOUtils.toByteArray(assets.open("111.png"))
-        return Base64.getEncoder().encodeToString(bytes)
-
-    }
-
+    @SuppressLint("SdCardPath")
     private fun openFile(name: String) {
-        val file = File("storage/emulated/0/Download", name)
-
-        this.lifecycleScope.launch {
-
-            val inputAsString = withContext(Dispatchers.IO) {
-                IOUtils.toByteArray(FileInputStream(file))
-            }
-            Log.d("XXX", Base64.getEncoder().encodeToString(inputAsString))
-        }
-
-
+//        val file = File("/storage/emulated/0/Download/", name)
+//        val file = File("/sdcard/DCIM/Camera/IMG_20231026_024056.jpg")
+//
+//        this.lifecycleScope.launch {
+//
+//            val inputAsString = withContext(Dispatchers.IO) {
+//                IOUtils.toByteArray(FileInputStream(file))
+//            }
+//            Log.d("XXX", Base64.getEncoder().encodeToString(inputAsString))
+//        }
 
 //        val viewImageIntent = Intent(Intent.ACTION_VIEW)
-//        viewImageIntent.setDataAndType(Uri.parse(imagePath), "image/*")
+//        viewImageIntent.setDataAndType(Uri.parse("content://media/external/images/media/1000000019/2023-10-26-03-11-40"), "image/jpg")
 //        startActivity(viewImageIntent)
     }
 
@@ -359,4 +321,73 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
+    private fun decodeImageToBase64(imageInputStream: InputStream): String {
+        return Base64.getEncoder().encodeToString(IOUtils.toByteArray(imageInputStream))
+    }
+
+    private fun getIntentData() {
+        val intentData = intent.getStringExtra("url")
+
+        if (intentData != null) {
+            Toast.makeText(this, intentData, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun checkPermissions() {
+        val isAllGranted = REQUEST_PERMISSIONS.all { permission ->
+            ContextCompat.checkSelfPermission(
+                this,
+                permission
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+        if (isAllGranted) {
+            Toast.makeText(this, "Предоставлены все необходимые разрешения", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            launcher.launch(REQUEST_PERMISSIONS)
+        }
+
+        if (Build.VERSION.SDK_INT <= 28) {
+            shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
+        if (Build.VERSION.SDK_INT <= 30) {
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH)
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_ADMIN)
+        }
+
+        if (Build.VERSION.SDK_INT >= 31) {
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_CONNECT)
+            shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_SCAN)
+        }
+
+        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
+        shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
+
+    }
+
+    companion object {
+        private val REQUEST_PERMISSIONS: Array<String> = buildList {
+            if (Build.VERSION.SDK_INT <= 28) {
+                add(Manifest.permission.READ_EXTERNAL_STORAGE)
+                add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+
+            if (Build.VERSION.SDK_INT <= 30) {
+                add(Manifest.permission.BLUETOOTH)
+                add(Manifest.permission.BLUETOOTH_ADMIN)
+            }
+
+            if (Build.VERSION.SDK_INT >= 31) {
+                add(Manifest.permission.BLUETOOTH_CONNECT)
+                add(Manifest.permission.BLUETOOTH_SCAN)
+            }
+
+            add(Manifest.permission.ACCESS_FINE_LOCATION)
+            add(Manifest.permission.ACCESS_COARSE_LOCATION)
+
+        }.toTypedArray()
+    }
 }
