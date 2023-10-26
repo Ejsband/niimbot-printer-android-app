@@ -38,7 +38,32 @@ import java.util.Base64
 
 class MainActivity : AppCompatActivity() {
 
-    private var printDensity = 3
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
+            if (map.values.all { it }) {
+                Toast.makeText(this, "All permissions are granted", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(this, "Permissions are not granted", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+    var isError = false
+    var isCancel = false
+    val pageCount = 1
+    var quantity = 1
+    private val printMode = 1
+    private val printMultiple = 8f
+    private var width = 75f
+    private var height = 120f
+    private val printDensity = 3
+    private val orientation = 0
+    private val totalQuantity = pageCount * quantity
+    val jsonList = ArrayList<String>()
+    val infoList = ArrayList<String>()
+    private val jsonInfo =
+        "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
     private lateinit var printer: JCPrintApi
 
@@ -60,20 +85,9 @@ class MainActivity : AppCompatActivity() {
         override fun onFirmErrors() {}
     }
 
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
-            if (map.values.all { it }) {
-                Toast.makeText(this, "All permissions are granted", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(this, "Permissions are not granted", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
 
     private var address: String? = null
-
-    val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
+    private val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,20 +153,6 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        var isError = false
-        var isCancel = false
-        val pageCount = 1
-        val quantity = 1
-        val printMode = 1
-        val printMultiple = 8f
-        val width = 75f
-        val height = 120f
-        val orientation = 0
-        val totalQuantity = pageCount * quantity
-        val jsonList = ArrayList<String>()
-        val infoList = ArrayList<String>()
-        val jsonInfo =
-            "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
         infoList.add(jsonInfo)
         printer.drawEmptyLabel(width, height, orientation, "")
