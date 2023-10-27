@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-55:12
-INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-55:12
-INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-55:12
-INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-55:12
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-60:12
+INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:1-60:12
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:2:1-24:12
 MERGED from [image-2.0.10-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/4ec20d2f77fa19eea9b3629173f3f502/transformed/image-2.0.10-release/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.10.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/63382362199d553975ec785d0a1c3d4b/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
@@ -62,72 +62,66 @@ MERGED from [androidx.print:print:1.0.0] /Users/ilyabogdanov/.gradle/caches/tran
 	xmlns:android
 		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:5:5-107
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:5:5-7:38
 	android:maxSdkVersion
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:5:79-105
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:7:9-35
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:5:22-78
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:9-65
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:5-106
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:8:5-10:38
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:15:5-80
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:15:5-80
 	android:maxSdkVersion
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:78-104
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:10:9-35
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:22-77
-uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:7:5-8:40
-	tools:ignore
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:8:9-37
-	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:7:22-79
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:9:9-64
 uses-permission#android.permission.BLUETOOTH
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:10:5-11:38
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:11:5-13:38
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:11:5-68
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:11:5-68
-	android:maxSdkVersion
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:11:9-35
-	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:10:22-65
-uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:12:5-13:38
-MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:12:5-74
-MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:12:5-74
 	android:maxSdkVersion
 		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:13:9-35
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:12:22-71
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:12:9-52
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:14:5-16:38
+MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:12:5-74
+MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:12:5-74
+	android:maxSdkVersion
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:16:9-35
+	android:name
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:15:9-58
 uses-permission#android.permission.BLUETOOTH_CONNECT
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:14:5-15:37
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:17:5-19:38
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:13:5-76
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:13:5-76
 	android:maxSdkVersion
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:19:9-35
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:14:22-73
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:9-60
 uses-permission#android.permission.BLUETOOTH_SCAN
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:16:5-17:38
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:20:5-22:38
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:14:5-73
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:14:5-73
 	android:maxSdkVersion
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:17:9-35
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:22:9-35
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:16:22-70
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:21:9-57
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:5-79
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:5-79
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:21:5-79
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:21:5-79
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:22-76
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:19:5-81
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:5-81
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:22:5-81
 MERGED from [3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:22:5-81
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:19:22-78
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:22-78
 application
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:22:5-53:19
-INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:22:5-53:19
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:27:5-58:19
+INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:27:5-58:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/63382362199d553975ec785d0a1c3d4b/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/63382362199d553975ec785d0a1c3d4b/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/ilyabogdanov/.gradle/caches/transforms-3/c8da0b00cb3dee3582f03f3d60b1ce57/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -147,59 +141,59 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/ilyabogdanov/.gradle
 	android:extractNativeLibs
 		INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml
 	android:requestLegacyExternalStorage
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:25:9-52
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:34:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:31:9-35
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:36:9-35
 	android:label
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:29:9-41
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:33:9-41
 	android:fullBackupContent
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:27:9-54
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:31:9-54
 	android:roundIcon
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:30:9-54
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:35:9-54
 	tools:targetApi
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:33:9-29
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:38:9-29
 	android:icon
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:28:9-43
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:32:9-43
 	android:allowBackup
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:9-35
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:29:9-35
 	android:theme
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:32:9-45
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:37:9-45
 	android:dataExtractionRules
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:26:9-65
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:30:9-65
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:9-42
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:28:9-42
 activity#ru.project.niimbot.ui.MainActivity
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:34:9-52:20
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:9-57:20
 	android:exported
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:36:13-36
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:41:13-36
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:35:13-44
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:40:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:38:13-42:29
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:43:13-47:29
 action#android.intent.action.MAIN
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:17-69
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:25-66
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:44:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:41:17-77
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:17-77
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:41:27-74
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:27-74
 intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:text/plain
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:44:13-51:29
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:49:13-56:29
 action#android.intent.action.SEND
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:45:17-69
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:50:17-69
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:45:25-66
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:50:25-66
 category#android.intent.category.DEFAULT
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:47:17-76
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:52:17-76
 	android:name
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:47:27-73
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:52:27-73
 data
-ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:48:17-55
+ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:53:17-55
 	android:mimeType
-		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:48:23-52
+		ADDED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:53:23-52
 uses-sdk
 INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml

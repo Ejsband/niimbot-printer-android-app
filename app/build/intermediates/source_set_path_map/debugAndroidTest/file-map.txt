@@ -1,4 +1,4 @@
-ru.project.niimbot.test.app-androidTest-0 D:\Projects\niimbot-printer-android-app\app\build\generated\res\resValues\androidTest\debug
-ru.project.niimbot.test.app-mergeDebugAndroidTestResources-1 D:\Projects\niimbot-printer-android-app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-ru.project.niimbot.test.app-mergeDebugAndroidTestResources-2 D:\Projects\niimbot-printer-android-app\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-ru.project.niimbot.test.app-merged_res-3 D:\Projects\niimbot-printer-android-app\app\build\intermediates\merged_res\debugAndroidTest
+ru.project.niimbot.test.app-androidTest-0 /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/generated/res/resValues/androidTest/debug
+ru.project.niimbot.test.app-mergeDebugAndroidTestResources-1 /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+ru.project.niimbot.test.app-mergeDebugAndroidTestResources-2 /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+ru.project.niimbot.test.app-merged_res-3 /Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/merged_res/debugAndroidTest

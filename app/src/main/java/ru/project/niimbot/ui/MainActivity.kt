@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private var intentCode: String? = null
     private var address: String? = null
     private val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
@@ -138,9 +139,9 @@ class MainActivity : AppCompatActivity() {
 //            printer.initImageProcessingDefault("", "")
 //            printer.openPrinterByAddress(address)
 //            printDensity = 3
-//            printPicture()
+            printPicture()
 
-            checkPermissions()
+//            checkPermissions()
 
 //            openFile("123.png")
         }
@@ -256,7 +257,10 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 //        return stringBuilder.toString()
-        return decodeImageToBase64(assets.open("111.png"))
+//        return decodeImageToBase64(assets.open("111.png"))
+
+        return intentCode!!
+
     }
 
 
@@ -330,6 +334,7 @@ class MainActivity : AppCompatActivity() {
         val intentData = intent.getStringExtra("url")
 
         if (intentData != null) {
+            intentCode = intentData
             Toast.makeText(this, intentData, Toast.LENGTH_SHORT).show()
         }
     }
