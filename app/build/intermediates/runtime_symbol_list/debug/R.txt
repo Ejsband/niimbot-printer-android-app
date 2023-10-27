@@ -1352,7 +1352,6 @@ int color background_floating_material_dark 0x7f05001d
 int color background_floating_material_light 0x7f05001e
 int color background_material_dark 0x7f05001f
 int color background_material_light 0x7f050020
-int color black 0x7f050021
 int color bright_foreground_disabled_material_dark 0x7f050022
 int color bright_foreground_disabled_material_light 0x7f050023
 int color bright_foreground_inverse_material_dark 0x7f050024
@@ -2063,7 +2062,6 @@ int color switch_thumb_normal_material_dark 0x7f0502e4
 int color switch_thumb_normal_material_light 0x7f0502e5
 int color tooltip_background_dark 0x7f0502e6
 int color tooltip_background_light 0x7f0502e7
-int color white 0x7f0502e8
 int dimen abc_action_bar_content_inset_material 0x7f060000
 int dimen abc_action_bar_content_inset_with_nav 0x7f060001
 int dimen abc_action_bar_default_height_material 0x7f060002

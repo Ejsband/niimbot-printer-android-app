@@ -3,6 +3,8 @@ package ru.project.niimbot.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -15,12 +17,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.gengcon.www.jcprintersdk.JCPrintApi
-import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
-import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
-import ru.project.niimbot.utility.PrinterUtility
-
+import ru.project.niimbot.domain.PrinterUseCase
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +33,9 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+    private lateinit var bluetoothAdapter: BluetoothAdapter
+    private lateinit var printer: JCPrintApi
 
     private var bluetoothDeviceId: String? = null
     private var pngImageInBase64: String? = null
@@ -55,28 +57,6 @@ class MainActivity : AppCompatActivity() {
     val settings = ArrayList<String>()
     val information = ArrayList<String>()
 
-    private lateinit var printer: JCPrintApi
-
-    private val callback: Callback = object : Callback {
-        override fun onConnectSuccess(s: String) {
-            Log.d("XXX", "Подключение к принтеру.")
-        }
-
-        override fun onDisConnect() {
-            Log.d("XXX", "Отключение от принтера")
-        }
-
-        override fun onElectricityChange(i: Int) {}
-        override fun onCoverStatus(i: Int) {}
-        override fun onPaperStatus(i: Int) {}
-        override fun onRfidReadStatus(i: Int) {}
-        override fun onPrinterIsFree(i: Int) {}
-        override fun onHeartDisConnect() {}
-        override fun onFirmErrors() {}
-    }
-
-    private val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,39 +72,40 @@ class MainActivity : AppCompatActivity() {
 
         val deviceButton2 = findViewById<Button>(R.id.deviceButton2)
 
+
+
         btn.setOnClickListener {
 
-            if (bAdapter == null) {
-                Toast.makeText(applicationContext, "Bluetooth Not Supported", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                if (ActivityCompat.checkSelfPermission(
-                        this,
-                        Manifest.permission.BLUETOOTH_CONNECT
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    val pairedDevices = bAdapter.bondedDevices
-                    if (pairedDevices.size > 0) {
-                        for (device in pairedDevices) {
-                            val deviceName = device.name
-                            val macAddress = device.address
-                            bluetoothDeviceId = device.address
-                            tvName.append("$deviceName \n")
-                            tvMac.append("$macAddress\n")
-                        }
+            bluetoothAdapter =
+                (this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
+
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.BLUETOOTH_CONNECT
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                val pairedDevices = bluetoothAdapter.bondedDevices
+                if (pairedDevices.size > 0) {
+                    for (device in pairedDevices) {
+                        val deviceName = device.name
+                        val macAddress = device.address
+                        bluetoothDeviceId = device.address
+                        tvName.append("$deviceName \n")
+                        tvMac.append("$macAddress\n")
                     }
-                } else {
-                    checkPermissions()
                 }
+            } else {
+                checkPermissions()
             }
         }
 
         deviceButton2.setOnClickListener {
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(bluetoothDeviceId)
-            printImage()
+            if (bluetoothDeviceId != null) {
+                printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
+                printImage()
+            } else {
+                Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -211,8 +192,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 printer.commitData(settings, information)
             }
-        }
-        )
+        })
     }
 
     private fun getIntentData() {
@@ -226,7 +206,8 @@ class MainActivity : AppCompatActivity() {
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
             this.imageOrientation = imageOrientation.toInt()
-            this.printerImageSettings ="{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
+            this.printerImageSettings =
+                "{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()

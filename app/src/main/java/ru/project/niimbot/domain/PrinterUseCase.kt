@@ -1,11 +1,11 @@
-package ru.project.niimbot.utility
+package ru.project.niimbot.domain
 
 import android.util.Log
 import com.gengcon.www.jcprintersdk.JCPrintApi
 import com.gengcon.www.jcprintersdk.callback.Callback
 import ru.project.niimbot.NiibotApplication
 
-class PrinterUtility {
+class PrinterUseCase {
 
     private val callback: Callback = object : Callback {
         override fun onConnectSuccess(s: String) {
@@ -18,11 +18,8 @@ class PrinterUtility {
         override fun onCoverStatus(i: Int) {}
         override fun onPaperStatus(i: Int) {}
         override fun onRfidReadStatus(i: Int) {}
-        override fun onPrinterIsFree(i: Int) {
-
-        }
-        override fun onHeartDisConnect() {
-        }
+        override fun onPrinterIsFree(i: Int) {}
+        override fun onHeartDisConnect() {}
         override fun onFirmErrors() {}
     }
 
@@ -34,13 +31,5 @@ class PrinterUtility {
         api.initImageProcessingDefault("", "")
         api.openPrinterByAddress(bluetoothDeviceId)
         return api
-    }
-
-    fun closeConnection() {
-        api.close()
-    }
-
-    fun isConnected(): Int {
-        return api.isConnection
     }
 }
