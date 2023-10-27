@@ -35,23 +35,25 @@ class MainActivity : AppCompatActivity() {
         }
 
     private var bluetoothDeviceId: String? = null
-
     private var pngImageInBase64: String? = null
     private var imageWidth: Float? = null
     private var imageHeight: Float? = null
     private var imageOrientation: Int? = null
+    private var printerImageSettings: String? = null
 
     private var isError = false
-    private var isCancel = false
-    private val pageCount = 1
-    private var quantity = 1
-    private val printMode = 1
-    private val printMultiple = 8f
-    private val printDensity = 3
-    private val totalQuantity = pageCount * quantity
-    val jsonList = ArrayList<String>()
-    val infoList = ArrayList<String>()
-    private var jsonInfo: String? = null
+    private var isCanceled = false
+
+    private val printerMode = 1
+    private val imageQuality = 3
+    private val magnificationRatio = 8f
+    private val imageQuantity = 1
+    private val pageAmount = 1
+    private val totalQuantity = pageAmount * imageQuantity
+
+    val settings = ArrayList<String>()
+    val information = ArrayList<String>()
+
 
 
     private lateinit var printer: JCPrintApi
@@ -126,33 +128,33 @@ class MainActivity : AppCompatActivity() {
             printer.openPrinterByAddress(bluetoothDeviceId)
 
 
-            printPicture()
+            printImage()
         }
     }
 
-    private fun printPicture() {
+    private fun printImage() {
 
         if (printer.isConnection != 0) {
             Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        infoList.add(jsonInfo!!)
+        information.add(printerImageSettings!!)
         printer.drawEmptyLabel(imageWidth!!, imageHeight!!, imageOrientation!!, "")
-        printer.drawLabelImage(this.pngImageInBase64, 0F, 0F,
-            imageWidth!!, imageHeight!!, 0, 1, 127F)
-        val jsonByte: ByteArray = printer.generateLabelJson()
-        val jsonStr = jsonByte.decodeToString()
-        jsonList.add(jsonStr)
+        printer.drawLabelImage(pngImageInBase64, 0F, 0F, imageWidth!!, imageHeight!!, 0, 1, 127F)
+
+//        val jsonByte: ByteArray = printer.generateLabelJson()
+//        val jsonStr = jsonByte.decodeToString()
+        settings.add(printer.generateLabelJson().decodeToString())
         printer.setTotalQuantityOfPrints(totalQuantity)
-        printer.startPrintJob(printDensity, 1, printMode, object : PrintCallback {
+        printer.startPrintJob(imageQuality, 1, printerMode, object : PrintCallback {
 
             override fun onProgress(
                 pageIndex: Int,
                 quantityIndex: Int,
                 hashMap: HashMap<String, Any>
             ) {
-                if (pageIndex == pageCount && quantityIndex == quantity) {
+                if (pageIndex == pageAmount && quantityIndex == imageQuantity) {
                     if (printer.endJob()) {
                         Log.d("XXX", "Успешное завершение печати")
                     } else {
@@ -204,17 +206,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelJob(isSuccess: Boolean) {
-                isCancel = true
+                isCanceled = true
             }
 
             override fun onBufferFree(pageIndex: Int, bufferSize: Int) {
                 if (isError) {
                     return
                 }
-                if (pageIndex > pageCount) {
+                if (pageIndex > pageAmount) {
                     return
                 }
-                printer.commitData(jsonList, infoList)
+                printer.commitData(settings, information)
             }
         }
         )
@@ -231,7 +233,7 @@ class MainActivity : AppCompatActivity() {
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
             this.imageOrientation = imageOrientation.toInt()
-            this.jsonInfo ="{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
+            this.printerImageSettings ="{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()
