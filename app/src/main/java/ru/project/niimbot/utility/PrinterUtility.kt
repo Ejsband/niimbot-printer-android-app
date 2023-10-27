@@ -18,8 +18,11 @@ class PrinterUtility {
         override fun onCoverStatus(i: Int) {}
         override fun onPaperStatus(i: Int) {}
         override fun onRfidReadStatus(i: Int) {}
-        override fun onPrinterIsFree(i: Int) {}
-        override fun onHeartDisConnect() {}
+        override fun onPrinterIsFree(i: Int) {
+
+        }
+        override fun onHeartDisConnect() {
+        }
         override fun onFirmErrors() {}
     }
 
@@ -31,5 +34,13 @@ class PrinterUtility {
         api.initImageProcessingDefault("", "")
         api.openPrinterByAddress(bluetoothDeviceId)
         return api
+    }
+
+    fun closeConnection() {
+        api.close()
+    }
+
+    fun isConnected(): Int {
+        return api.isConnection
     }
 }
