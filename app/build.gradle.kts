@@ -37,10 +37,6 @@ dependencies {
     implementation(files("./libs/3.1.8-release.aar"))
     implementation(files("./libs/image-2.0.10-release.aar"))
 
-//    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-//    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-//    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")

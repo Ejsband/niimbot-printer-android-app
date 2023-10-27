@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "ru.project.niimbot.app-mergeDebugResources-34:/values-fr-rCA/values-fr-rCA.xml",
+            "outputFile": "ru.project.niimbot.app-mergeDebugResources-30:/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
                     "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/ea81018398a5eb9877f0ba4a04db551f/transformed/appcompat-1.6.1/res/values-fr-rCA/values-fr-rCA.xml",

@@ -1,4 +1,4 @@
-#Sat Oct 28 01:30:00 KRAT 2023
+#Sat Oct 28 02:19:28 KRAT 2023
 base.0=/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex

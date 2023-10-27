@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "ru.project.niimbot.app-mergeDebugResources-34:/values/values.xml",
+            "outputFile": "ru.project.niimbot.app-mergeDebugResources-30:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/f27cc9987ff57f135654f4a6a31b5537/transformed/viewpager2-1.0.0/res/values/values.xml",
@@ -173,7 +173,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/9a49ec82e29fd776b12af32e31012555/transformed/lifecycle-viewmodel-2.6.2/res/values/values.xml",
+                    "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/0aebaa6862acbf3f0d1ea6274bb46e28/transformed/lifecycle-viewmodel-2.6.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -187,6 +187,23 @@
                         "startOffsets": "123425",
                         "endColumns": "49",
                         "endOffsets": "123470"
+                    }
+                },
+                {
+                    "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/8d6607644711d8e68101d093bb111b1c/transformed/lifecycle-runtime-2.6.1/res/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    },
+                    "to": {
+                        "startLines": "1862",
+                        "startColumns": "4",
+                        "startOffsets": "123268",
+                        "endColumns": "42",
+                        "endOffsets": "123306"
                     }
                 },
                 {
@@ -274,23 +291,6 @@
                         "endLines": "1796,1829,1866,11379,11383",
                         "endColumns": "56,64,63,24,24",
                         "endOffsets": "119925,121620,123534,717447,717596"
-                    }
-                },
-                {
-                    "source": "/Users/ilyabogdanov/.gradle/caches/transforms-3/e54ae2af55e4fbeb8eeceab912d45486/transformed/lifecycle-runtime-2.6.2/res/values/values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "42",
-                        "endOffsets": "93"
-                    },
-                    "to": {
-                        "startLines": "1862",
-                        "startColumns": "4",
-                        "startOffsets": "123268",
-                        "endColumns": "42",
-                        "endOffsets": "123306"
                     }
                 },
                 {

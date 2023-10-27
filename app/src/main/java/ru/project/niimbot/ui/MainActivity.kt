@@ -3,7 +3,6 @@ package ru.project.niimbot.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -20,9 +19,6 @@ import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
 import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,29 +26,33 @@ class MainActivity : AppCompatActivity() {
     private val launcher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
             if (map.values.all { it }) {
-                Toast.makeText(this, "All permissions are granted", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Все разрешения выданы", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                Toast.makeText(this, "Permissions are not granted", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Не все разрешения выданы", Toast.LENGTH_SHORT)
                     .show()
             }
         }
 
-    var isError = false
-    var isCancel = false
-    val pageCount = 1
-    var quantity = 1
+    private var bluetoothDeviceId: String? = null
+
+    private var pngImageInBase64: String? = null
+    private var imageWidth: Float? = null
+    private var imageHeight: Float? = null
+    private var imageOrientation: Int? = null
+
+    private var isError = false
+    private var isCancel = false
+    private val pageCount = 1
+    private var quantity = 1
     private val printMode = 1
     private val printMultiple = 8f
-    private var width = 75f
-    private var height = 120f
     private val printDensity = 3
-    private val orientation = 0
     private val totalQuantity = pageCount * quantity
     val jsonList = ArrayList<String>()
     val infoList = ArrayList<String>()
     private val jsonInfo =
-        "{\"printerImageProcessingInfo\": {\"orientation\": $orientation, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $width, \"height\": $height, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
+        "{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
 
     private lateinit var printer: JCPrintApi
 
@@ -74,9 +74,6 @@ class MainActivity : AppCompatActivity() {
         override fun onFirmErrors() {}
     }
 
-
-    private var intentCode: String? = null
-    private var address: String? = null
     private val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     @SuppressLint("MissingInflatedId")
@@ -111,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                         for (device in pairedDevices) {
                             val deviceName = device.name
                             val macAddress = device.address
-                            address = device.address
+                            bluetoothDeviceId = device.address
                             tvName.append("$deviceName \n")
                             tvMac.append("$macAddress\n")
                         }
@@ -126,7 +123,9 @@ class MainActivity : AppCompatActivity() {
             printer = JCPrintApi.getInstance(callback)
             printer.init(NiibotApplication().getNiibotApplicationInstance())
             printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(address)
+            printer.openPrinterByAddress(bluetoothDeviceId)
+
+
             printPicture()
         }
     }
@@ -139,15 +138,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         infoList.add(jsonInfo)
-        printer.drawEmptyLabel(width, height, orientation, "")
-//        val imageData: String = getJson(this, "image.json").replace("\"", "")
-        printer.drawLabelImage(intentCode, 0F, 0F, width, height, 0, 1, 127F)
+        printer.drawEmptyLabel(imageWidth!!, imageHeight!!, imageOrientation!!, "")
+        printer.drawLabelImage(this.pngImageInBase64, 0F, 0F,
+            imageWidth!!, imageHeight!!, 0, 1, 127F)
         val jsonByte: ByteArray = printer.generateLabelJson()
         val jsonStr = jsonByte.decodeToString()
         jsonList.add(jsonStr)
-
         printer.setTotalQuantityOfPrints(totalQuantity)
-
         printer.startPrintJob(printDensity, 1, printMode, object : PrintCallback {
 
             override fun onProgress(
@@ -223,35 +220,20 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-//    private fun getJson(context: Context, fileName: String): String {
-//        val stringBuilder = StringBuilder()
-//        try {
-//            val assetManager = context.assets
-//            val bf = BufferedReader(
-//                InputStreamReader(
-//                    assetManager.open(fileName)
-//                )
-//            )
-//            var line: String?
-//            while (bf.readLine().also { line = it } != null) {
-//                stringBuilder.append(line)
-//            }
-//        } catch (e: IOException) {
-//            e.printStackTrace()
-//        }
-////        return stringBuilder.toString()
-////        return decodeImageToBase64(assets.open("111.png"))
-//
-//        return intentCode!!
-//
-//    }
-
     private fun getIntentData() {
-        val intentData = intent.getStringExtra("url")
+        val pngImageInBase64 = intent.getStringExtra("pngImageInBase64")
+        val imageWidth = intent.getStringExtra("imageWidth")
+        val imageHeight = intent.getStringExtra("imageHeight")
+        val imageOrientation = intent.getStringExtra("imageOrientation")
 
-        if (intentData != null) {
-            intentCode = intentData
-//            Toast.makeText(this, intentData, Toast.LENGTH_SHORT).show()
+        if (pngImageInBase64 != null && imageWidth != null && imageHeight != null && imageOrientation != null) {
+            this.pngImageInBase64 = pngImageInBase64
+            this.imageWidth = imageWidth.toFloat()
+            this.imageHeight = imageHeight.toFloat()
+            this.imageOrientation = imageOrientation.toInt()
+        } else {
+            Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
