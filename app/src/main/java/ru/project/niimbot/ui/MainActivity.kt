@@ -109,6 +109,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getIntentData() {
+        val pngImageInBase64 = intent.getStringExtra("pngImageInBase64")
+        val imageWidth = intent.getStringExtra("imageWidth")
+        val imageHeight = intent.getStringExtra("imageHeight")
+        val imageOrientation = intent.getStringExtra("imageOrientation")
+
+        if (pngImageInBase64 != null && imageWidth != null && imageHeight != null && imageOrientation != null) {
+            this.pngImageInBase64 = pngImageInBase64
+            this.imageWidth = imageWidth.toFloat()
+            this.imageHeight = imageHeight.toFloat()
+            this.imageOrientation = imageOrientation.toInt()
+            this.printerImageSettings =
+                "{\"printerImageProcessingInfo\": {\"orientation\": $imageOrientation, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $imageWidth, \"height\": $imageHeight, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
+        } else {
+            Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
     private fun printImage() {
 
         if (printer.isConnection != 0) {
@@ -195,25 +214,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun getIntentData() {
-        val pngImageInBase64 = intent.getStringExtra("pngImageInBase64")
-        val imageWidth = intent.getStringExtra("imageWidth")
-        val imageHeight = intent.getStringExtra("imageHeight")
-        val imageOrientation = intent.getStringExtra("imageOrientation")
-
-        if (pngImageInBase64 != null && imageWidth != null && imageHeight != null && imageOrientation != null) {
-            this.pngImageInBase64 = pngImageInBase64
-            this.imageWidth = imageWidth.toFloat()
-            this.imageHeight = imageHeight.toFloat()
-            this.imageOrientation = imageOrientation.toInt()
-            this.printerImageSettings =
-                "{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
-        } else {
-            Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-
     private fun checkPermissions() {
         val isAllGranted = REQUEST_PERMISSIONS.all { permission ->
             ContextCompat.checkSelfPermission(
@@ -240,7 +240,6 @@ class MainActivity : AppCompatActivity() {
 
         shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
         shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
-
     }
 
     companion object {
