@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.gengcon.www.jcprintersdk.JCPrintApi
-import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
-import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
 import ru.project.niimbot.utility.PrinterUtility
 
@@ -106,8 +104,9 @@ class MainActivity : AppCompatActivity() {
             if (bluetoothDeviceId != null) {
                 printer = PrinterUtility().getPrinter(bluetoothDeviceId!!)
                 printImage()
+                printer.close()
             } else {
-                Toast.makeText(this, "Не найден id bluetooth устройства", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -210,7 +209,8 @@ class MainActivity : AppCompatActivity() {
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
             this.imageOrientation = imageOrientation.toInt()
-            this.printerImageSettings ="{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
+            this.printerImageSettings =
+                "{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()
