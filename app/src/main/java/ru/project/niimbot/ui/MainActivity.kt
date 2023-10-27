@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
     private val totalQuantity = pageCount * quantity
     val jsonList = ArrayList<String>()
     val infoList = ArrayList<String>()
-    private val jsonInfo =
-        "{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
+    private var jsonInfo: String? = null
+
 
     private lateinit var printer: JCPrintApi
 
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        infoList.add(jsonInfo)
+        infoList.add(jsonInfo!!)
         printer.drawEmptyLabel(imageWidth!!, imageHeight!!, imageOrientation!!, "")
         printer.drawLabelImage(this.pngImageInBase64, 0F, 0F,
             imageWidth!!, imageHeight!!, 0, 1, 127F)
@@ -231,6 +231,7 @@ class MainActivity : AppCompatActivity() {
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
             this.imageOrientation = imageOrientation.toInt()
+            this.jsonInfo ="{\"printerImageProcessingInfo\": {\"orientation\": ${imageOrientation}, \"margin\": [0,0,0,0], \"printQuantity\": $quantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": ${imageWidth}, \"height\": ${imageHeight}, \"printMultiple\": $printMultiple, \"epc\": \"\"}}"
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()
