@@ -19,6 +19,7 @@ import com.gengcon.www.jcprintersdk.callback.Callback
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
 import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
+import ru.project.niimbot.utility.PrinterUtility
 
 
 class MainActivity : AppCompatActivity() {
@@ -54,27 +55,7 @@ class MainActivity : AppCompatActivity() {
     val settings = ArrayList<String>()
     val information = ArrayList<String>()
 
-
-
     private lateinit var printer: JCPrintApi
-
-    private val callback: Callback = object : Callback {
-        override fun onConnectSuccess(s: String) {
-            Log.d("XXX", "Подключение к принтеру.")
-        }
-
-        override fun onDisConnect() {
-            Log.d("XXX", "Отключение от принтера")
-        }
-
-        override fun onElectricityChange(i: Int) {}
-        override fun onCoverStatus(i: Int) {}
-        override fun onPaperStatus(i: Int) {}
-        override fun onRfidReadStatus(i: Int) {}
-        override fun onPrinterIsFree(i: Int) {}
-        override fun onHeartDisConnect() {}
-        override fun onFirmErrors() {}
-    }
 
     private val bAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
@@ -84,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getIntentData()
-
 
         val tvName = findViewById<TextView>(R.id.nameTv)
 
@@ -122,13 +102,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         deviceButton2.setOnClickListener {
-            printer = JCPrintApi.getInstance(callback)
-            printer.init(NiibotApplication().getNiibotApplicationInstance())
-            printer.initImageProcessingDefault("", "")
-            printer.openPrinterByAddress(bluetoothDeviceId)
 
-
-            printImage()
+            if (bluetoothDeviceId != null) {
+                printer = PrinterUtility().getPrinter(bluetoothDeviceId!!)
+                printImage()
+            } else {
+                Toast.makeText(this, "Не найден id bluetooth устройства", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -142,9 +122,6 @@ class MainActivity : AppCompatActivity() {
         information.add(printerImageSettings!!)
         printer.drawEmptyLabel(imageWidth!!, imageHeight!!, imageOrientation!!, "")
         printer.drawLabelImage(pngImageInBase64, 0F, 0F, imageWidth!!, imageHeight!!, 0, 1, 127F)
-
-//        val jsonByte: ByteArray = printer.generateLabelJson()
-//        val jsonStr = jsonByte.decodeToString()
         settings.add(printer.generateLabelJson().decodeToString())
         printer.setTotalQuantityOfPrints(totalQuantity)
         printer.startPrintJob(imageQuality, 1, printerMode, object : PrintCallback {
