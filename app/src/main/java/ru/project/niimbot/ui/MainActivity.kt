@@ -335,7 +335,7 @@ class MainActivity : AppCompatActivity() {
 
         if (intentData != null) {
             intentCode = intentData
-            Toast.makeText(this, intentData, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, intentData, Toast.LENGTH_SHORT).show()
         }
     }
 
