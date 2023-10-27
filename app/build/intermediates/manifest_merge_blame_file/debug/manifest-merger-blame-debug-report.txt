@@ -10,199 +10,186 @@
 10
 11    <uses-permission
 11-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:5:5-7:38
-12        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-12-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:9-65
-13        android:maxSdkVersion="28" />
+12        android:name="android.permission.BLUETOOTH"
+12-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:6:9-52
+13        android:maxSdkVersion="30" />
 13-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:7:9-35
 14    <uses-permission
 14-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:8:5-10:38
-15        android:name="android.permission.READ_EXTERNAL_STORAGE"
-15-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:9:9-64
-16        android:maxSdkVersion="28" />
+15        android:name="android.permission.BLUETOOTH_ADMIN"
+15-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:9:9-58
+16        android:maxSdkVersion="30" />
 16-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:10:9-35
 17    <uses-permission
 17-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:11:5-13:38
-18        android:name="android.permission.BLUETOOTH"
-18-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:12:9-52
-19        android:maxSdkVersion="30" />
+18        android:name="android.permission.BLUETOOTH_CONNECT"
+18-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:12:9-60
+19        android:maxSdkVersion="31" />
 19-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:13:9-35
 20    <uses-permission
 20-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:14:5-16:38
-21        android:name="android.permission.BLUETOOTH_ADMIN"
-21-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:15:9-58
-22        android:maxSdkVersion="30" />
+21        android:name="android.permission.BLUETOOTH_SCAN"
+21-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:15:9-57
+22        android:maxSdkVersion="31" />
 22-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:16:9-35
-23    <uses-permission
-23-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:17:5-19:38
-24        android:name="android.permission.BLUETOOTH_CONNECT"
-24-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:9-60
-25        android:maxSdkVersion="31" />
-25-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:19:9-35
-26    <uses-permission
-26-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:20:5-22:38
-27        android:name="android.permission.BLUETOOTH_SCAN"
-27-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:21:9-57
-28        android:maxSdkVersion="31" />
-28-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:22:9-35
-29    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-29-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:5-79
-29-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:22-76
-30    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-30-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:5-81
-30-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:22-78
-31    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-31-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:16:5-79
-31-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:16:22-76
-32    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-32-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:17:5-76
-32-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:17:22-73
-33    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-33-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:18:5-76
-33-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:18:22-73
-34    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-34-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:19:5-79
-34-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:19:22-76
-35    <uses-permission android:name="android.permission.INTERNET" />
-35-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:20:5-67
-35-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:20:22-64
-36
-37    <permission
-37-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-38        android:name="ru.project.niimbot.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-38-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
-39        android:protectionLevel="signature" />
-39-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
-40
-41    <uses-permission android:name="ru.project.niimbot.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-41-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
-41-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
-42
-43    <application
-43-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:27:5-58:19
-44        android:name="ru.project.niimbot.NiibotApplication"
-44-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:28:9-42
-45        android:allowBackup="true"
-45-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:29:9-35
-46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-46-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
-47        android:dataExtractionRules="@xml/data_extraction_rules"
-47-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:30:9-65
-48        android:debuggable="true"
-49        android:extractNativeLibs="false"
-50        android:fullBackupContent="@xml/backup_rules"
-50-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:31:9-54
-51        android:icon="@mipmap/ic_launcher"
-51-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:32:9-43
-52        android:label="@string/app_name"
-52-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:33:9-41
-53        android:requestLegacyExternalStorage="true"
-53-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:34:9-52
-54        android:roundIcon="@mipmap/ic_launcher_round"
-54-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:35:9-54
-55        android:supportsRtl="true"
-55-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:36:9-35
-56        android:testOnly="true"
-57        android:theme="@style/Theme.Niimbot" >
-57-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:37:9-45
-58        <activity
-58-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:9-57:20
-59            android:name="ru.project.niimbot.ui.MainActivity"
-59-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:40:13-44
-60            android:exported="true" >
-60-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:41:13-36
-61            <intent-filter>
-61-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:43:13-47:29
-62                <action android:name="android.intent.action.MAIN" />
-62-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:44:17-69
-62-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:44:25-66
-63
-64                <category android:name="android.intent.category.LAUNCHER" />
-64-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:17-77
-64-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:27-74
-65            </intent-filter>
-66            <intent-filter>
-66-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:49:13-56:29
-67                <action android:name="android.intent.action.SEND" />
-67-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:50:17-69
-67-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:50:25-66
+23    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+23-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:17:5-79
+23-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:17:22-76
+24    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+24-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:5-81
+24-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:18:22-78
+25    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+25-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:15:5-80
+25-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:15:22-77
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:16:5-79
+26-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:16:22-76
+27    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+27-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:17:5-76
+27-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:17:22-73
+28    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+28-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:18:5-76
+28-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:18:22-73
+29    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+29-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:19:5-79
+29-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:19:22-76
+30    <uses-permission android:name="android.permission.INTERNET" />
+30-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:20:5-67
+30-->[3.1.8-release.aar] /Users/ilyabogdanov/.gradle/caches/transforms-3/b8f2eb92de9be615de15850bdbda87d6/transformed/3.1.8-release/AndroidManifest.xml:20:22-64
+31
+32    <permission
+32-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+33        android:name="ru.project.niimbot.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+33-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+34        android:protectionLevel="signature" />
+34-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+35
+36    <uses-permission android:name="ru.project.niimbot.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+36-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+36-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+37
+38    <application
+38-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:21:5-50:19
+39        android:name="ru.project.niimbot.NiibotApplication"
+39-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:22:9-42
+40        android:allowBackup="true"
+40-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:23:9-35
+41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+41-->[androidx.core:core:1.12.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/78dcbb7886a7084f048896d4d349572e/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+42        android:dataExtractionRules="@xml/data_extraction_rules"
+42-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:24:9-65
+43        android:debuggable="true"
+44        android:extractNativeLibs="false"
+45        android:fullBackupContent="@xml/backup_rules"
+45-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:25:9-54
+46        android:icon="@mipmap/ic_launcher"
+46-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:26:9-43
+47        android:label="@string/app_name"
+47-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:27:9-41
+48        android:roundIcon="@mipmap/ic_launcher_round"
+48-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:28:9-54
+49        android:supportsRtl="true"
+49-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:29:9-35
+50        android:testOnly="true"
+51        android:theme="@style/Theme.Niimbot" >
+51-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:30:9-45
+52        <activity
+52-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:32:9-49:20
+53            android:name="ru.project.niimbot.ui.MainActivity"
+53-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:33:13-44
+54            android:exported="true" >
+54-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:34:13-36
+55            <intent-filter>
+55-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:36:13-40:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:37:17-69
+56-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:37:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:17-77
+58-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:39:27-74
+59            </intent-filter>
+60            <intent-filter>
+60-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:42:13-48:29
+61                <action android:name="android.intent.action.SEND" />
+61-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:43:17-69
+61-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:43:25-66
+62
+63                <category android:name="android.intent.category.DEFAULT" />
+63-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:45:17-76
+63-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:45:27-73
+64
+65                <data android:mimeType="text/plain" />
+65-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:17-55
+65-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:46:23-52
+66            </intent-filter>
+67        </activity>
 68
-69                <category android:name="android.intent.category.DEFAULT" />
-69-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:52:17-76
-69-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:52:27-73
-70
-71                <data android:mimeType="text/plain" />
-71-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:53:17-55
-71-->/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/src/main/AndroidManifest.xml:53:23-52
-72                <!-- <data android:mimeType="image/png" /> -->
-73
-74            </intent-filter>
-75        </activity>
-76
-77        <provider
-77-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-78            android:name="androidx.startup.InitializationProvider"
-78-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
-79            android:authorities="ru.project.niimbot.androidx-startup"
-79-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
-80            android:exported="false" >
-80-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
-81            <meta-data
-81-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-82                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-82-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
-83                android:value="androidx.startup" />
-83-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
-84            <meta-data
-84-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ilyabogdanov/.gradle/caches/transforms-3/b1466cc17a6dcdf69625081e524827b8/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-85                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-85-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ilyabogdanov/.gradle/caches/transforms-3/b1466cc17a6dcdf69625081e524827b8/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-86                android:value="androidx.startup" />
-86-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/ilyabogdanov/.gradle/caches/transforms-3/b1466cc17a6dcdf69625081e524827b8/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-87            <meta-data
-87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-88                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-89                android:value="androidx.startup" />
-89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-90        </provider>
-91
-92        <receiver
-92-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-93            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-93-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-94            android:directBootAware="false"
-94-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-95            android:enabled="true"
-95-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-96            android:exported="true"
-96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-97            android:permission="android.permission.DUMP" >
-97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-98            <intent-filter>
-98-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-99                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-100            </intent-filter>
-101            <intent-filter>
-101-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-102                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-103            </intent-filter>
-104            <intent-filter>
-104-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-105                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-105-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-106            </intent-filter>
-107            <intent-filter>
-107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-108                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-109            </intent-filter>
-110        </receiver>
-111    </application>
-112
-113</manifest>
+69        <provider
+69-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+70            android:name="androidx.startup.InitializationProvider"
+70-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+71            android:authorities="ru.project.niimbot.androidx-startup"
+71-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+72            android:exported="false" >
+72-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+73            <meta-data
+73-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+74                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+74-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+75                android:value="androidx.startup" />
+75-->[androidx.emoji2:emoji2:1.2.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/d39a1a71cb92445ad924395f05b3b45a/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+76            <meta-data
+76-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ilyabogdanov/.gradle/caches/transforms-3/52093c2e9b2d6b99e3306c6b4afb83ad/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+77                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+77-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ilyabogdanov/.gradle/caches/transforms-3/52093c2e9b2d6b99e3306c6b4afb83ad/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+78                android:value="androidx.startup" />
+78-->[androidx.lifecycle:lifecycle-process:2.6.1] /Users/ilyabogdanov/.gradle/caches/transforms-3/52093c2e9b2d6b99e3306c6b4afb83ad/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+79            <meta-data
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+80                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+81                android:value="androidx.startup" />
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+82        </provider>
+83
+84        <receiver
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+85            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+86            android:directBootAware="false"
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+87            android:enabled="true"
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+88            android:exported="true"
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+89            android:permission="android.permission.DUMP" >
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+90            <intent-filter>
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+91                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+92            </intent-filter>
+93            <intent-filter>
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+94                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+95            </intent-filter>
+96            <intent-filter>
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+97                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+98            </intent-filter>
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+100                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/ilyabogdanov/.gradle/caches/transforms-3/c70309ac4172ba14e74f435e091b28c9/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+101            </intent-filter>
+102        </receiver>
+103    </application>
+104
+105</manifest>
