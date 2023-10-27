@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.apache.commons.io.IOUtils
+import ru.project.niimbot.NiibotApplication
 import ru.project.niimbot.R
 import java.io.BufferedReader
 import java.io.File
@@ -134,11 +135,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         deviceButton2.setOnClickListener {
-//            printer = JCPrintApi.getInstance(callback)
-//            printer.init(NiibotApplication().getNiibotApplicationInstance())
-//            printer.initImageProcessingDefault("", "")
-//            printer.openPrinterByAddress(address)
-//            printDensity = 3
+            printer = JCPrintApi.getInstance(callback)
+            printer.init(NiibotApplication().getNiibotApplicationInstance())
+            printer.initImageProcessingDefault("", "")
+            printer.openPrinterByAddress(address)
             printPicture()
 
 //            checkPermissions()
