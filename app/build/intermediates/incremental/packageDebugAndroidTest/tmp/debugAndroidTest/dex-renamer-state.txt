@@ -1,4 +1,0 @@
-#Sat Oct 28 00:23:00 KRAT 2023
-base.0=/Users/ilyabogdanov/StudioProjects/niimbot-printer-android-app/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
-path.0=0/classes.dex
-renamed.0=classes.dex

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">niimbot</string>
-    <style name="Base.Theme.Niimbot" parent="Theme.Material3.DayNight.NoActionBar">
-        
-        
-    </style>
-    <style name="Theme.Niimbot" parent="Base.Theme.Niimbot"/>
-</resources>

@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private var imageWidth: Float? = null
     private var imageHeight: Float? = null
     private var imageOrientation: Int? = null
-    private var printerImageSettings: String? = null
+    private var imageSettings: String? = null
 
     private var isError = false
     private var isCanceled = false
@@ -102,7 +102,13 @@ class MainActivity : AppCompatActivity() {
         deviceButton2.setOnClickListener {
             if (bluetoothDeviceId != null) {
                 printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
-                printImage()
+
+                if (printer.isConnection != 0) {
+                    Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
+                } else {
+                    printImage()
+                }
+
             } else {
                 Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
             }
@@ -120,7 +126,7 @@ class MainActivity : AppCompatActivity() {
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
             this.imageOrientation = imageOrientation.toInt()
-            this.printerImageSettings =
+            this.imageSettings =
                 "{\"printerImageProcessingInfo\": {\"orientation\": $imageOrientation, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $imageWidth, \"height\": $imageHeight, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
@@ -129,13 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun printImage() {
-
-        if (printer.isConnection != 0) {
-            Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        information.add(printerImageSettings!!)
+        information.add(imageSettings!!)
         printer.drawEmptyLabel(imageWidth!!, imageHeight!!, imageOrientation!!, "")
         printer.drawLabelImage(pngImageInBase64, 0F, 0F, imageWidth!!, imageHeight!!, 0, 1, 127F)
         settings.add(printer.generateLabelJson().decodeToString())
@@ -181,13 +181,13 @@ class MainActivity : AppCompatActivity() {
                     17 -> errorMessage = "Не удалось установить тип бумаги"
                     18 -> errorMessage = "Сбой настройки режима печати"
                     19 -> errorMessage = "Не удалось установить уровень концентрации тонера"
-                    20 -> errorMessage = "Ошибка rfid записи"
+                    20 -> errorMessage = "Ошибка RFID-метки"
                     21 -> errorMessage = "Не удалось настроить поля"
                     22 -> errorMessage = "Нарушение связи с принтером"
                     23 -> errorMessage = "Принтер отключен"
                     24 -> errorMessage = "Ошибка параметра чертежной доски"
                     25 -> errorMessage = "Неправильный угол поворота"
-                    26 -> errorMessage = "ошибка json параметра"
+                    26 -> errorMessage = "Ошибка json параметра"
                     27 -> errorMessage = "Ненормальный выход бумаги"
                     28 -> errorMessage = "Проверьте тип бумаги"
                     29 -> errorMessage = "RFID-метка не была записана"

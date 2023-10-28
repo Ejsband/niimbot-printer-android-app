@@ -11,9 +11,11 @@ class PrinterUseCase {
         override fun onConnectSuccess(s: String) {
             Log.d("XXX", "Подключение к принтеру.")
         }
+
         override fun onDisConnect() {
             Log.d("XXX", "Отключение от принтера")
         }
+
         override fun onElectricityChange(i: Int) {}
         override fun onCoverStatus(i: Int) {}
         override fun onPaperStatus(i: Int) {}
@@ -31,5 +33,15 @@ class PrinterUseCase {
         api.initImageProcessingDefault("", "")
         api.openPrinterByAddress(bluetoothDeviceId)
         return api
+    }
+
+    fun printImage(
+        pngImageInBase64: String,
+        imageWidth: Float,
+        imageHeight: Float,
+        imageOrientation: Int,
+        imageSettings: String
+    ) {
+
     }
 }
