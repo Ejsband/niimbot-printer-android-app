@@ -35,13 +35,13 @@ class PrinterUseCase {
         return api
     }
 
-    fun printImage(
-        pngImageInBase64: String,
-        imageWidth: Float,
-        imageHeight: Float,
-        imageOrientation: Int,
-        imageSettings: String
-    ) {
-
-    }
+//    fun printImage(
+//        pngImageInBase64: String,
+//        imageWidth: Float,
+//        imageHeight: Float,
+//        imageOrientation: Int,
+//        imageSettings: String
+//    ) {
+//
+//    }
 }

@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private var imageOrientation: Int? = null
     private var imageSettings: String? = null
 
+    private var isPaired = false
     private var isError = false
     private var isCanceled = false
 
@@ -64,64 +65,38 @@ class MainActivity : AppCompatActivity() {
 
         getIntentData()
 
-        val tvName = findViewById<TextView>(R.id.nameTv)
 
-        val tvMac = findViewById<TextView>(R.id.macAddressTv)
+        findViewById<Button>(R.id.deviceButton2).setOnClickListener {
 
-        val btn = findViewById<Button>(R.id.btnGet)
-
-        val deviceButton2 = findViewById<Button>(R.id.deviceButton2)
-
-
-
-        btn.setOnClickListener {
-
-            bluetoothAdapter =
-                (this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
-
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.BLUETOOTH_CONNECT
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                val pairedDevices = bluetoothAdapter.bondedDevices
-                if (pairedDevices.size > 0) {
-                    for (device in pairedDevices) {
-                        val deviceName = device.name
-                        val macAddress = device.address
-                        bluetoothDeviceId = device.address
-                        tvName.append("$deviceName \n")
-                        tvMac.append("$macAddress\n")
-                    }
-                }
-            } else {
-                checkPermissions()
-            }
-        }
-
-        deviceButton2.setOnClickListener {
             if (bluetoothDeviceId != null) {
-                printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
 
-                if (printer.isConnection != 0) {
-                    Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
+                if (isPaired(bluetoothDeviceId!!)) {
+                    printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
+
+                    if (printer.isConnection != 0) {
+                        Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        printImage()
+                    }
                 } else {
-                    printImage()
+                    Toast.makeText(this, "Устройство не найдено в списка спаренный девайсов", Toast.LENGTH_SHORT).show()
                 }
-
             } else {
                 Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+
     private fun getIntentData() {
+        val bluetoothDeviceId = intent.getStringExtra("bluetoothDeviceId")
         val pngImageInBase64 = intent.getStringExtra("pngImageInBase64")
         val imageWidth = intent.getStringExtra("imageWidth")
         val imageHeight = intent.getStringExtra("imageHeight")
         val imageOrientation = intent.getStringExtra("imageOrientation")
 
-        if (pngImageInBase64 != null && imageWidth != null && imageHeight != null && imageOrientation != null) {
+        if (bluetoothDeviceId != null && pngImageInBase64 != null && imageWidth != null && imageHeight != null && imageOrientation != null) {
+            this.bluetoothDeviceId = bluetoothDeviceId
             this.pngImageInBase64 = pngImageInBase64
             this.imageWidth = imageWidth.toFloat()
             this.imageHeight = imageHeight.toFloat()
@@ -132,6 +107,38 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()
         }
+    }
+
+    private fun isPaired(deviceId: String): Boolean {
+
+        var exiest = false
+
+        bluetoothAdapter =
+            (this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.BLUETOOTH_CONNECT
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            val pairedDevices = bluetoothAdapter.bondedDevices
+            if (pairedDevices.size > 0) {
+                for (device in pairedDevices) {
+                    if (deviceId == device.address) {
+                        exiest = true
+                    }
+                }
+            }
+        } else {
+            Toast.makeText(
+                this,
+                "Нет спаренных устройств или не даны разрешения",
+                Toast.LENGTH_SHORT
+            ).show()
+            checkPermissions()
+            return false
+        }
+        return exiest
     }
 
     private fun printImage() {
