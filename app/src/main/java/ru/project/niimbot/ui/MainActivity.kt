@@ -156,6 +156,7 @@ class MainActivity : AppCompatActivity() {
                 if (pageIndex == pageAmount && quantityIndex == imageQuantity) {
                     if (printer.endJob()) {
                         Log.d("XXX", "Успешное завершение печати")
+                        finishAffinity()
                     } else {
                         Log.d("XXX", "Не удалось завершить печать")
                     }
