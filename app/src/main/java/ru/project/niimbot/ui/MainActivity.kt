@@ -64,26 +64,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getIntentData()
+    }
 
+    private fun startAction() {
+        if (bluetoothDeviceId != null) {
 
-        findViewById<Button>(R.id.deviceButton2).setOnClickListener {
+            if (isPaired(bluetoothDeviceId!!)) {
+                printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
 
-            if (bluetoothDeviceId != null) {
-
-                if (isPaired(bluetoothDeviceId!!)) {
-                    printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
-
-                    if (printer.isConnection != 0) {
-                        Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
-                    } else {
-                        printImage()
-                    }
+                if (printer.isConnection != 0) {
+                    Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Устройство не найдено в списка спаренный девайсов", Toast.LENGTH_SHORT).show()
+                    printImage()
                 }
             } else {
-                Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Устройство не найдено в списка спаренный девайсов", Toast.LENGTH_SHORT).show()
             }
+        } else {
+            Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -103,6 +101,8 @@ class MainActivity : AppCompatActivity() {
             this.imageOrientation = imageOrientation.toInt()
             this.imageSettings =
                 "{\"printerImageProcessingInfo\": {\"orientation\": $imageOrientation, \"margin\": [0,0,0,0], \"printQuantity\": $imageQuantity, \"horizontalOffset\": 0, \"verticalOffset\": 0, \"width\": $imageWidth, \"height\": $imageHeight, \"printMultiple\": $magnificationRatio, \"epc\": \"\"}}"
+
+            startAction()
         } else {
             Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
                 .show()
@@ -136,7 +136,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
             checkPermissions()
-            return false
         }
         return exiest
     }
