@@ -1,7 +1,6 @@
 package ru.odinesina.niimbot.ui
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.content.Context
@@ -9,15 +8,18 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.gengcon.www.jcprintersdk.JCPrintApi
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
+import ru.odinesina.niimbot.R
+import ru.odinesina.niimbot.databinding.ActivityMainBinding
 import ru.odinesina.niimbot.domain.PrinterUseCase
-import ru.project.niimbot.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,10 +58,13 @@ class MainActivity : AppCompatActivity() {
     val settings = ArrayList<String>()
     val information = ArrayList<String>()
 
-    @SuppressLint("MissingInflatedId")
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         getIntentData()
     }
@@ -72,12 +77,15 @@ class MainActivity : AppCompatActivity() {
                 printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
 
                 if (printer.isConnection != 0) {
+                    showContent(binding.image, R.drawable.ic_warning, "ПРИНТЕР НЕ ПОДКЛЮЧЕН")
                     Toast.makeText(this, "Принтер не подключён!", Toast.LENGTH_SHORT).show()
                 } else {
+                    showContent(binding.image, R.drawable.ic_printer, "  ИДЕТ ПЕЧАТЬ")
                     printImage()
                 }
 
             } else {
+                showContent(binding.image, R.drawable.ic_warning, "УСТРОЙСТВО НЕ НАЙДЕНО")
                 Toast.makeText(
                     this,
                     "Устройство не найдено в списке спаренных устройств!",
@@ -85,10 +93,10 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         } else {
+            showContent(binding.image, R.drawable.ic_warning, "НЕ НАЙДЕН ID УСТРОЙСТВА")
             Toast.makeText(this, "Не найден id блютуз устройства!", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun getIntentData() {
         val bluetoothDeviceId = intent.getStringExtra("bluetoothDeviceId")
@@ -108,9 +116,16 @@ class MainActivity : AppCompatActivity() {
 
             startAction()
         } else {
+            showContent(binding.image, R.drawable.ic_warning, "ПАРАМЕТРЫ РАВНЫ NULL")
             Toast.makeText(this, "Один или несколько параметров равны null!", Toast.LENGTH_SHORT)
                 .show()
         }
+    }
+
+    private fun showContent(view: ImageView, image: Int, text: String) {
+        Glide.with(view).clear(view)
+        Glide.with(view).load(image).into(view)
+        binding.text.text = text
     }
 
     private fun isPaired(deviceId: String): Boolean {

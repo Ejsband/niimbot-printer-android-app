@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "ru.project.niimbot"
+    namespace = "ru.odinesina.niimbot"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.project.niimbot"
+        applicationId = "ru.odinesina.niimbot"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -30,6 +30,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
