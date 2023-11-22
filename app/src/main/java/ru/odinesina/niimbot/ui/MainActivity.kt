@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    private lateinit var binding: ActivityMainBinding
     private lateinit var bluetoothAdapter: BluetoothAdapter
     private lateinit var printer: JCPrintApi
 
@@ -43,29 +44,21 @@ class MainActivity : AppCompatActivity() {
     private var imageHeight: Float? = null
     private var imageOrientation: Int? = null
     private var imageSettings: String? = null
-
-    private var isPaired = false
     private var isError = false
     private var isCanceled = false
-
     private val printerMode = 1
     private val imageQuality = 3
     private val magnificationRatio = 8f
     private val imageQuantity = 1
     private val pageAmount = 1
     private val totalQuantity = pageAmount * imageQuantity
-
-    val settings = ArrayList<String>()
-    val information = ArrayList<String>()
-
-    private lateinit var binding: ActivityMainBinding
+    private val settings = ArrayList<String>()
+    private val information = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         getIntentData()
     }
 
