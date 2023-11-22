@@ -1,4 +1,4 @@
-package ru.project.niimbot.ui
+package ru.odinesina.niimbot.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -16,8 +16,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.gengcon.www.jcprintersdk.JCPrintApi
 import com.gengcon.www.jcprintersdk.callback.PrintCallback
+import ru.odinesina.niimbot.domain.PrinterUseCase
 import ru.project.niimbot.R
-import ru.project.niimbot.domain.PrinterUseCase
 
 class MainActivity : AppCompatActivity() {
 

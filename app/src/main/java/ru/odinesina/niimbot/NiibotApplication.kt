@@ -1,4 +1,4 @@
-package ru.project.niimbot
+package ru.odinesina.niimbot
 
 import android.app.Application
 
