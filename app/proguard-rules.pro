@@ -1,12 +1,1 @@
--keep public class com.gengcon.www.jcprintersdk.**{*;}
--keep public class com.jingchen.jcimagesdk.**{*;}
--keep public class com.dothantech.**{*;}
--keep public class zpSDK.zpSDK.**{*;}
--keep public class com.snbc.sdk.**{*;}
--keep public class android_serialport_api.**{*;}
--dontwarn com.gengcon.www.jcprintersdk.**
--dontwarn com.jingchen.jcimagesdk.**
--dontwarn com.dothantech.**
--dontwarn zpSDK.zpSDK.**
--dontwarn com.snbc.sdk.**
--dontwarn android_serialport_api.**
+
