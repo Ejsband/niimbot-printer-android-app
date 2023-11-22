@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
 
             startAction()
         } else {
-            showContent(binding.image, R.drawable.ic_warning, "ПАРАМЕТРЫ РАВНЫ NULL")
+            showContent(binding.image, R.drawable.ic_warning, "ПАРАМЕТРЫ ДЛЯ ПЕЧАТИ НЕ ПЕРЕДАНЫ")
             Toast.makeText(this, "Один или несколько параметров равны null!", Toast.LENGTH_SHORT)
                 .show()
         }

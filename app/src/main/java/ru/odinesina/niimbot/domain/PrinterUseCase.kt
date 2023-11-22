@@ -34,14 +34,4 @@ class PrinterUseCase {
         api.openPrinterByAddress(bluetoothDeviceId)
         return api
     }
-
-//    fun printImage(
-//        pngImageInBase64: String,
-//        imageWidth: Float,
-//        imageHeight: Float,
-//        imageOrientation: Int,
-//        imageSettings: String
-//    ) {
-//
-//    }
 }
