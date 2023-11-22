@@ -9,8 +9,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -70,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         if (bluetoothDeviceId != null) {
 
             if (isPaired(bluetoothDeviceId!!)) {
+
                 printer = PrinterUseCase().getPrinter(bluetoothDeviceId!!)
 
                 if (printer.isConnection != 0) {
@@ -77,11 +76,16 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     printImage()
                 }
+
             } else {
-                Toast.makeText(this, "Устройство не найдено в списка спаренный девайсов", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Устройство не найдено в списке спаренных устройств!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         } else {
-            Toast.makeText(this, "Не найден id блютуз устройства", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Не найден id блютуз устройства!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -104,14 +108,14 @@ class MainActivity : AppCompatActivity() {
 
             startAction()
         } else {
-            Toast.makeText(this, "Один или несколько параметров равны null", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Один или несколько параметров равны null!", Toast.LENGTH_SHORT)
                 .show()
         }
     }
 
     private fun isPaired(deviceId: String): Boolean {
 
-        var exiest = false
+        var exist = false
 
         bluetoothAdapter =
             (this.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
@@ -125,19 +129,19 @@ class MainActivity : AppCompatActivity() {
             if (pairedDevices.size > 0) {
                 for (device in pairedDevices) {
                     if (deviceId == device.address) {
-                        exiest = true
+                        exist = true
                     }
                 }
             }
         } else {
             Toast.makeText(
                 this,
-                "Нет спаренных устройств или не даны разрешения",
+                "Нет спаренных устройств или не даны разрешения!",
                 Toast.LENGTH_SHORT
             ).show()
             checkPermissions()
         }
-        return exiest
+        return exist
     }
 
     private fun printImage() {
@@ -155,11 +159,11 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (pageIndex == pageAmount && quantityIndex == imageQuantity) {
                     if (printer.endJob()) {
-                        Log.d("XXX", "Успешное завершение печати")
+                        Log.d("XXX", "Успешное завершение печати!")
                         printer.close()
                         finishAffinity()
                     } else {
-                        Log.d("XXX", "Не удалось завершить печать")
+                        Log.d("XXX", "Не удалось завершить печать!")
                     }
                 }
             }
@@ -170,37 +174,37 @@ class MainActivity : AppCompatActivity() {
                 isError = true
                 var errorMessage = ""
                 when (errorCode) {
-                    1 -> errorMessage = "Открыта крышка"
-                    2 -> errorMessage = "Нехватка бумаги"
-                    3 -> errorMessage = "Низкий заряд батареи"
-                    4 -> errorMessage = "Неисправная батарея"
-                    5 -> errorMessage = "Ручная остановка печати"
-                    6 -> errorMessage = "Ошибка данных"
-                    7 -> errorMessage = "Принтер перегрелся"
-                    8 -> errorMessage = "Ненормальный выход бумаги"
-                    9 -> errorMessage = "Ошибка печати"
-                    10 -> errorMessage = "Печатающая головка не обнаружена"
-                    11 -> errorMessage = "Температура окружающей среды слишком низкая"
-                    12 -> errorMessage = "Печатающая головка не заблокирована"
-                    13 -> errorMessage = "Лента не обнаружена"
-                    14 -> errorMessage = "Несоответствующая лента"
-                    15 -> errorMessage = "Лента закончилась"
-                    16 -> errorMessage = "Неподдерживаемые типы бумаги"
-                    17 -> errorMessage = "Не удалось установить тип бумаги"
-                    18 -> errorMessage = "Сбой настройки режима печати"
-                    19 -> errorMessage = "Не удалось установить уровень концентрации тонера"
-                    20 -> errorMessage = "Ошибка RFID-метки"
-                    21 -> errorMessage = "Не удалось настроить поля"
-                    22 -> errorMessage = "Нарушение связи с принтером"
-                    23 -> errorMessage = "Принтер отключен"
-                    24 -> errorMessage = "Ошибка параметра чертежной доски"
-                    25 -> errorMessage = "Неправильный угол поворота"
-                    26 -> errorMessage = "Ошибка json параметра"
-                    27 -> errorMessage = "Ненормальный выход бумаги"
-                    28 -> errorMessage = "Проверьте тип бумаги"
-                    29 -> errorMessage = "RFID-метка не была записана"
-                    30 -> errorMessage = "Установлен неверный уровень концентрации тонера"
-                    31 -> errorMessage = "Неподдерживаемый режим печати"
+                    1 -> errorMessage = "Открыта крышка!"
+                    2 -> errorMessage = "Нехватка бумаги!"
+                    3 -> errorMessage = "Низкий заряд батареи!"
+                    4 -> errorMessage = "Неисправная батарея!"
+                    5 -> errorMessage = "Ручная остановка печати!"
+                    6 -> errorMessage = "Ошибка данных!"
+                    7 -> errorMessage = "Принтер перегрелся!"
+                    8 -> errorMessage = "Ненормальный выход бумаги!"
+                    9 -> errorMessage = "Ошибка печати!"
+                    10 -> errorMessage = "Печатающая головка не обнаружена!"
+                    11 -> errorMessage = "Температура окружающей среды слишком низкая!"
+                    12 -> errorMessage = "Печатающая головка не заблокирована!"
+                    13 -> errorMessage = "Лента не обнаружена!"
+                    14 -> errorMessage = "Несоответствующая лента!"
+                    15 -> errorMessage = "Лента закончилась!"
+                    16 -> errorMessage = "Неподдерживаемые типы бумаги!"
+                    17 -> errorMessage = "Не удалось установить тип бумаги!"
+                    18 -> errorMessage = "Сбой настройки режима печати!"
+                    19 -> errorMessage = "Не удалось установить уровень концентрации тонера!"
+                    20 -> errorMessage = "Ошибка RFID-метки!"
+                    21 -> errorMessage = "Не удалось настроить поля!"
+                    22 -> errorMessage = "Нарушение связи с принтером!"
+                    23 -> errorMessage = "Принтер отключен!"
+                    24 -> errorMessage = "Ошибка параметра чертежной доски!"
+                    25 -> errorMessage = "Неправильный угол поворота!"
+                    26 -> errorMessage = "Ошибка json параметра!"
+                    27 -> errorMessage = "Ненормальный выход бумаги!"
+                    28 -> errorMessage = "Проверьте тип бумаги!"
+                    29 -> errorMessage = "RFID-метка не была записана!"
+                    30 -> errorMessage = "Установлен неверный уровень концентрации тонера!"
+                    31 -> errorMessage = "Неподдерживаемый режим печати!"
                     else -> {}
                 }
                 Log.d("XXX", "Произошла ошибка: $errorMessage")
@@ -230,7 +234,7 @@ class MainActivity : AppCompatActivity() {
             ) == PackageManager.PERMISSION_GRANTED
         }
         if (isAllGranted) {
-            Toast.makeText(this, "Предоставлены все необходимые разрешения", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Предоставлены все необходимые разрешения!", Toast.LENGTH_SHORT)
                 .show()
         } else {
             launcher.launch(REQUEST_PERMISSIONS)

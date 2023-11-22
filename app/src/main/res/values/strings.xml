@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">niimbot</string>
+    <string name="printer_image">Printer image</string>
 </resources>
